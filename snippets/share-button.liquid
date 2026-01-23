@@ -1,0 +1,83 @@
+{% comment %}
+  Renders share button.
+  Accepts:
+  - block: {Object} passes in the block information.
+  - share_link: {String} url to be added to the input the user will get/copy.
+
+  Usage:
+  {% render 'share-button',
+    block: block,
+    share_link: share_url
+  %}
+{% endcomment %}
+{% comment %} <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
+
+<share-button id="Share-{{ section.id }}" class="share-button large-up-hide quick-add-hidden" {{ block.shopify_attributes }}>
+  <button class="share-button__button hidden">
+    {% render 'icon-share' %}
+    {{ block.settings.share_label | escape }}
+  </button>
+  <details id="Details-{{ block.id }}-{{ section.id }}">
+    <summary class="share-button__button">
+      {% render 'icon-share' %}
+      {{ block.settings.share_label | escape }}
+    </summary>
+    <div class="share-button__fallback motion-reduce">
+      <div class="field">
+        <span id="ShareMessage-{{ section.id }}" class="share-button__message hidden" role="status"> </span>
+        <input
+          type="text"
+          class="field__input"
+          id="ShareUrl-{{ section.id }}"
+          value="{{ share_link }}"
+          placeholder="{{ 'general.share.share_url' | t }}"
+          onclick="this.select();"
+          readonly
+        >
+        <label class="field__label" for="ShareUrl-{{ section.id }}">{{ 'general.share.share_url' | t }}</label>
+      </div>
+      <button class="share-button__close hidden">
+        {% render 'icon-close' %}
+        <span class="visually-hidden">{{ 'general.share.close' | t }}</span>
+      </button>
+      <button class="share-button__copy">
+        {% render 'icon-clipboard' %}
+        <span class="visually-hidden">{{ 'general.share.copy_to_clipboard' | t }}</span>
+      </button>
+    </div>
+  </details>
+</share-button> {% endcomment %}
+{% assign full_url = request.host | append: request.path %}
+
+  <div class="share-desktop-icons">
+    <div>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ full_url | url_encode }}" target="_blank" class="social-link">
+        <span class="icon-social">
+          {% render 'icon-facebook' %}
+        </span>
+        <span class="icon-caption">
+          Share
+        </span>
+      </a>
+    </div>
+    <div>
+      <a href="http://twitter.com/share?text={{ product.title }}&url={{ full_url | url_encode }}" target="_blank" class="social-link">
+        <span class="icon-social">
+          {% render 'icon-twitter' %}
+        </span>
+        <span class="icon-caption">
+          Tweet
+        </span>
+      </a>
+    </div>
+    <div>
+      <a href=http://pinterest.com/pin/create/link/?url={{ full_url | url_encode }}&description={{ product.title }}" target="_blank" class="social-link">
+        <span class="icon-social">
+          {% render 'icon-pinterest' %}
+        </span>
+        <span class="icon-caption">
+          Pin it
+        </span>
+      </a>
+    </div>
+  </div>

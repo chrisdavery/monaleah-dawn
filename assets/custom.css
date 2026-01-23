@@ -1,0 +1,366 @@
+.accent-text-1 {
+    color: rgb(var(--color-accent-1));
+}
+.accent-text-2 {
+    color: rgb(var(--color-accent-2));
+}
+.accent-text-3 {
+    color: rgb(var(--color-accent-3));
+}
+.accent-text-4 {
+    color: rgb(var(--color-accent-4));
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-d-column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-0-5 {
+    gap: 0.5rem;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.hand-note h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.hand-note .text-area {
+    margin-bottom: 0;
+}
+.caption-note {
+    display: block;
+    line-height: 1.2em;
+    padding-left: 2.8rem;
+    font-size: 1.4rem;
+}
+
+.notetick__label {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    line-height: 1em;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 1rem;
+}
+.notetick__label input[type="checkbox"] {
+    display: none;
+}
+
+.notetick__label > svg {
+    background-color: rgb(var(--color-background));
+    margin-right: 1.2rem;
+    flex-shrink: 0;
+}
+
+.notetick__label .icon-checkmark {
+    visibility: hidden;
+    position: absolute;
+    left: 0.3rem;
+    z-index: 5;
+    top: .5rem;
+}
+
+.notetick__label input[type='checkbox']:checked ~ .icon-checkmark {
+    visibility: visible;
+}
+
+.preview-form__buttons {
+    max-width: 44rem;
+}
+
+.pplr-personal-handwritten-note,.pplr-premium-sympathy-card {
+    display: none;
+}
+
+.pplr-wrapper label {
+    padding-bottom: 0 !important;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.pplr_prev_span {
+    display: none;
+}
+.select__select {
+    font-size: 1.4rem;
+}
+
+.product-form__input .form__label {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.preview-form__buttons {
+    margin-bottom: -1.5rem !important;
+}
+
+.icon-flex {
+    display: flex;
+    align-items: center;
+}
+
+.icon-flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    line-height: 1.2em;
+}
+
+.icon-flex svg {
+    display: block;
+    width: 3rem;
+    height: auto;
+}
+
+.icon-flex-column {
+    flex-direction: column;
+}
+
+.arrival-chart .icon-flex .caption-large {
+    display: block;
+    line-height: 1.2em;
+}
+
+.arrival-chart {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.arrival-chart:before {
+    content: '';
+    width: calc(100% - 5rem);
+    height: .2rem;
+    background: rgb(var(--color-accent-2));
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.rounded-icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+.rounded-icon {
+    padding: 1rem;
+    border-radius: 50%;
+    background: rgb(var(--color-accent-2));
+}
+
+.estimated-wrapper .accent-text-1 {
+    display: block;
+    line-height: 1.2em;
+    margin-top: 1rem;
+}
+
+.product-personalizer,.cp-sel-Photos,.pplr-wrapper {
+    float: unset !important;
+}
+
+.jscroll {
+    margin-bottom: 1rem;
+}
+
+.page-width--full {
+    max-width: 160rem;
+}
+
+.header__icon--cart .icon {
+    height: 2.4rem;
+    width: 2.4rem;
+}
+
+.button--rounded {
+    --buttons-radius: 30px;
+    --buttons-radius-outset: 30px;
+}
+
+.button--large {
+    font-size: 1.6rem;
+    min-width: calc(17rem + var(--buttons-border-width)* 2);
+}
+
+.slide-adaptable .slider {
+    transition: all ease .5s;
+    overflow-y: hidden;
+}
+
+.slide-adaptable .slider__slide {
+    padding: 0 !important;
+}
+
+.preview-button[hidden] {
+    display: none;
+}
+.shopify-policy__container {
+    padding: 0 1.5rem;
+    max-width: var(--page-width) !important;
+}
+
+.hand-note .text-area {
+    font-size: 1.6rem;
+    border-color: #dddddd !important;
+}
+.hand-note .text-area:focus-visible, .pplr_select:focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 0 calc(.1rem + var(--inputs-border-width)) rgba(var(--color-foreground)) !important;
+}
+
+.hand-note .text-area::placeholder {
+    color: #dddddd !important;
+}
+
+.product-personalizer * {
+    font-family: inherit !important;
+}
+
+.rte ul, .rte ol {
+    list-style-position: outside;
+}
+
+sticky-product-cta {
+  padding-top: .5rem !important;
+  padding-bottom: .5rem !important;
+  display: block;
+  position: fixed;
+  bottom: -7.5rem;
+  width: 100%;
+  z-index: 3;
+  box-shadow: 0 -2px 10px 3px #0000000a;
+  transition: all var(--duration-default) ease;
+}
+sticky-product-cta .product-form__submit {
+  min-height: calc(4rem + var(--buttons-border-width) * 2);
+}
+
+sticky-product-cta.active {
+  bottom: 0;
+}
+
+sticky-product-cta h3 {
+  margin: 0;
+}
+
+.sticky-button-el {
+  font-size: 1.4rem;
+  min-height: calc(4rem + var(--buttons-border-width) * 2);
+  padding: 1rem 2rem;
+  min-width: calc(25rem + var(--buttons-border-width) * 2);
+  margin: 0;
+}
+
+.thumbnail-sticky img {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}
+
+.icon-heart-tribute {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+    bottom: 0;
+    z-index: 2;
+    right: 1rem;
+    bottom: 1rem;
+    top: unset !important;
+    left: unset !important;
+    border-radius: 50%;
+    background: rgb(var(--color-foreground));
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-heart-tribute svg {
+    display: block;
+    width: 2rem;
+    height: auto;
+    color: rgb(var(--color-background));
+    fill: rgb(var(--color-background));
+}
+
+.newsletter-form__field-wrapper .rte {
+    font-size: 1.4rem;
+    line-height: 1.3em;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.jdgm-medal__image.thumbnail-list_item--variant {
+    display: block !important;
+}
+
+.jdgm-widget.jdgm-review-widget .jdgm-medals .jdgm-medal__value {
+    transform: translateX(-50%);
+    left: 50% !important;
+    padding: 0 !important;
+}
+
+@media (min-width: 990px) {
+    .shopify-policy__body {
+        max-width: 80rem;
+    }
+    .shopify-policy__body p + h2 {
+        margin-top: 3.5rem;
+    }
+    sticky-product-cta .button {
+        min-width: calc(28rem + var(--buttons-border-width) * 2);
+    }
+
+    sticky-product-cta {
+        background: transparent !important;
+        box-shadow: none !important;
+        padding-bottom: 1rem !important;
+    }
+}
+
+@media (max-width: 989px) {
+
+    .header {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    sticky-product-cta .button {
+        width: 100%;
+    }
+}
+
+@media (min-width: 750px) {
+    .product-form__input .form__label,.pplr-wrapper label {
+        font-size: 1.6rem;
+    }
+    .shopify-policy__container {
+        padding: 0 5rem 4rem;
+    }
+    .button--large {
+        min-width: calc(24rem + var(--buttons-border-width)* 2);
+        min-height: calc(5rem + var(--buttons-border-width)* 2);
+        font-size: 2rem;
+    }
+}

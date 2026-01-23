@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_yQYjWW": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_HfTyJy": {
+          "type": "heading",
+          "settings": {
+            "heading": "We Are Here to Help",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HfTyJy"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Comforting_hands_holding_each_other_in_soft_warm_light_representing_the_compassionate_customer_care_team_at_Monaleah_Sympathy_Gifts.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-20d8814a-7670-48a1-b51e-6a279c025956",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        ".rte {font-size: 1.4rem; max-width: 50rem;}",
+        "@media (min-width: 990px) {.page-width--narrow {max-width: 49.6rem; }}"
+      ],
+      "settings": {
+        "hide_title": true,
+        "color_scheme": "scheme-e34e5a0b-3ee8-4ff8-9def-0f3dc07e79ec",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "custom_liquid_6apFWq": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% style %}\n.track-wrapper {\n    position: relative;\n}\n.track-wrapper a {\n    padding: 1rem;\n    border-radius: 15px;\n    border: .1rem solid rgba(var(--color-foreground), var(--inputs-border-opacity));\n    background: rgb(255,255,255);\n}\n\n.caret-icon {\n    position: absolute;\n    top: 50%;\n    right: 1rem;\n    transform: translateY(-50%) rotate(-90deg);\n}\n.caret-icon svg {\n    display: block;\n    width: 1.8rem;\n    height: auto;\n    color: rgba(var(--color-foreground), var(--inputs-border-opacity));\n}\n\n.track-icon svg {\n    display: block;\n    width: 4.4rem;\n    height: auto;\n}\n\n  @media (min-width: 990px) {\n    #shopify-section-{{ section.id }} .page-width--narrow {\n      max-width: 50.6rem;\n    }\n  }\n{% endstyle %}\n\n<div class=\"page-width page-width--narrow\">\n    <div class=\"track-wrapper\">\n        <a href=\"/apps/track123\" class=\"full-unstyled-link\">\n            <div class=\"d-flex gap-1 align-center\">\n                <div>\n                    <div class=\"track-icon\">\n                            <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 108.97 122.88\" style=\"enable-background:new 0 0 108.97 122.88\" xml:space=\"preserve\"><g><path d=\"M91.36,103.58l11.21,12.23l-7.74,7.07l-10.81-11.9c-4.11,2.73-9.06,4.34-14.37,4.34c-7.16,0-13.64-2.9-18.32-7.58 c-4.7-4.7-7.58-11.18-7.58-18.32c0-7.16,2.9-13.64,7.58-18.32c4.7-4.7,11.18-7.58,18.32-7.58c7.16,0,13.64,2.9,18.32,7.58 c4.7,4.7,7.58,11.18,7.58,18.32c0,5.23-1.55,10.11-4.22,14.2L91.36,103.58L91.36,103.58z M105.23,8.54c0.6-0.12,1.22,0,1.73,0.31 c0.88,0.36,1.5,1.22,1.5,2.23l0.51,70.57c0.04,0.87-0.38,1.73-1.18,2.2l-3.05,1.82c-0.09-0.88-1.26-4.9-0.63-5.28l-0.47-65.32 l-23.7,14.94v0v25.3c-1.58-0.5-3.56-0.89-5.22-1.17V30.71l-31.54-4.07l-1.05,30.49l-11.2-7.63l-11.2,6.33l2.31-31.88L5.34,22.46 v66.13l28.03,3.04c0.11,1.65,0.33,3.51,0.65,5.09L2.31,93.2C1.02,93.13,0,92.07,0,90.76V18.99h0c-0.03-0.96,0.52-1.89,1.45-2.3 L38.98,0.2l0,0c0.39-0.17,0.84-0.24,1.29-0.19L105.23,8.54L105.23,8.54L105.23,8.54z M70.02,8.82L46.97,21.7l30.6,3.91l20.98-13.05 L70.02,8.82L70.02,8.82L70.02,8.82z M25.03,19.43L47.84,5.91l-7.52-0.99L11.3,17.68L25.03,19.43L25.03,19.43z M84.71,74.36 c-3.85-3.85-9.16-6.23-15.03-6.23c-5.88,0-11.19,2.38-15.03,6.23c-3.85,3.85-6.23,9.16-6.23,15.03c0,5.88,2.38,11.19,6.23,15.03 c3.85,3.85,9.16,6.23,15.03,6.23c5.88,0,11.19-2.38,15.03-6.23c3.85-3.85,6.23-9.16,6.23-15.03C90.94,83.51,88.55,78.2,84.71,74.36 L84.71,74.36z\"/></g></svg>\n                    </div>\n                </div>\n                <div>\n                    <div class=\"rte h3\">\n                        Track order <span class=\"caret-icon\">{% render 'icon-caret' %}</span>\n                    </div>\n                </div>\n            </div>\n        </a>\n    </div>\n</div>",
+        "color_scheme": "scheme-e34e5a0b-3ee8-4ff8-9def-0f3dc07e79ec",
+        "padding_top": 0,
+        "padding_bottom": 32
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "custom_css": [],
+      "settings": {
+        "heading": "Contact Us",
+        "heading_size": "h2",
+        "color_scheme": "scheme-e34e5a0b-3ee8-4ff8-9def-0f3dc07e79ec",
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "image_banner_yQYjWW",
+    "main",
+    "custom_liquid_6apFWq",
+    "form"
+  ]
+}

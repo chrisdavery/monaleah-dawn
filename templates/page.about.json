@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "hide_title": false,
+        "color_scheme": "",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_LMNiTJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_YyzJGQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>Our Story:</em> It Started With a Hello, and Ends With a Promise.",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YyzJGQ"
+      ],
+      "custom_css": [
+        "em {color: rgb(var(--color-button)); font-style: normal;}",
+        ".rich-text__wrapper {width: 100%;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_banner_77xy8i": {
+      "type": "image-banner",
+      "custom_css": [
+        "@media (min-width: 750px) {{display: none; }}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Mintu_the_yellow_Labrador_Retriever_the_beloved_rescue_dog_who_inspired_the_creation_of_Monaleah_custom_memorial_stones..jpg",
+        "image_2": "shopify://shop_images/Monaleah_founder_s_rescue_kitten_Tuni_sleeping_safely_in_a_hand_representing_the_comfort_behind_our_thoughtful_pet_sympathy_gifts..jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "image_with_text_UPDiMD": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_CMEzkn": {
+          "type": "heading",
+          "settings": {
+            "heading": "Who We Are",
+            "heading_size": "h2"
+          }
+        },
+        "text_XhEkrR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Monaleah is a family-run memorial studio dedicated to creating thoughtful, personalized sympathy gifts. We specialize in custom memorial stones and keepsakes designed to offer comfort to those honoring a beloved pet. We are here to provide a lasting way to say “you are loved, and you are remembered.”</p>",
+            "text_style": "body"
+          }
+        },
+        "heading_w8TJgH": {
+          "type": "heading",
+          "settings": {
+            "heading": "How We Began",
+            "heading_size": "h2"
+          }
+        },
+        "text_pnEce3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Monaleah didn’t start in a boardroom. It started on a crisp winter afternoon in 2015, the day I lost my best friend, Mintu.</p><p>Mintu was the kind of dog who felt more like a guardian angel. He followed my uncle home one day, and from that first look, I knew he was mine. He was this perfect mix of an old soul and a playful spirit; he was protective enough to watch over our whole family yet so deeply gentle in everything he did. When he passed, the silence he left behind was deafening. I woke up every day reaching for him and missing the weight of his presence.</p><p>Then came Tuni.</p><p>I found her in an old church; she was a tiny, fragile kitten only five days old. She was so small I was terrified to hold her, but she turned out to be the strongest soul I’ve ever met. She went from a fragile rescue to the boss of the entire house. She was my shadow, snuggling up every single night, and she would fall asleep on my hand while I stayed perfectly still so I wouldn’t wake her. Losing her in 2020 felt like losing a piece of my own heartbeat.</p>",
+            "text_style": "body"
+          }
+        },
+        "heading_6mNi7K": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why Monaleah Exists",
+            "heading_size": "h2"
+          }
+        },
+        "text_mabDgt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I created Monaleah because I know that empty feeling. I know the panic of wanting to hold onto a memory before it fades.</p><p>When I was grieving, I searched everywhere for something that felt \"right\", something that wasn't just a generic product but a tribute that matched the love I felt. I realized that when people are looking for a place to buy or gift thoughtful sympathy and memorial gifts, they aren't looking for \"inventory.\" They are looking for closure.</p>",
+            "text_style": "body"
+          }
+        },
+        "heading_hwkaMT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Promise to You",
+            "heading_size": "h2"
+          }
+        },
+        "text_9rHVhR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We create memorials for people who are grieving quietly, loving deeply, and looking for something that feels right. Whether it’s for your own healing or to support a friend after a loss, we are honored to be trusted by families across the country to handle these memories with care.</p><p>Every piece we make at Monaleah is crafted with Mintu and Tuni in mind. We don't just print photos on stone; we help you freeze a moment in time.</p><p>If you are here because you are trying to honor a life that meant everything to you, we hope you find something here that brings you a small sense of peace.</p><p><em>In loving memory of Mintu (2015) & Tuni (2020)</em>.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CMEzkn",
+        "text_XhEkrR",
+        "heading_w8TJgH",
+        "text_pnEce3",
+        "heading_6mNi7K",
+        "text_mabDgt",
+        "heading_hwkaMT",
+        "text_9rHVhR"
+      ],
+      "custom_css": [
+        "{--page-width: 100%;}",
+        ".image-with-text__text {margin-top: 0.5rem;}",
+        "@media (min-width: 990px) {.image-with-text__content {padding-block: 0; } .image-with-text__media {min-height: unset; }}",
+        "@media (max-width: 749px) {.image-with-text__content {padding-inline: 1.5rem; padding-top: 2rem; } .image-with-text__media-item {display: none;} .page-width {padding: 0; } [class*=\"section-template-\"] {padding-top: 0; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/monaleah_2.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_LMNiTJ",
+    "image_banner_77xy8i",
+    "image_with_text_UPDiMD"
+  ]
+}

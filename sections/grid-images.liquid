@@ -1,0 +1,219 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="page-width">
+        {%- unless section.settings.title == blank -%}
+            <div class="title-wrapper-with-link justify-center title-wrapper--no-top-margin overlayed-images__title">
+              <h2 class="title center inline-richtext {{ section.settings.heading_size }}">
+                {{ section.settings.title }}
+              </h2>
+            </div>
+        {%- endunless -%}
+
+        <div class="grid align-center grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop">
+            {% for block in section.blocks %}
+                {%- liquid
+                    assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio
+                    assign full_width = '100vw'
+                    assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                    assign stacked_sizes = '(min-width: 750px) 60vw, 120vw'
+
+                    assign fetch_priority = 'auto'
+                    if section.index == 1
+                      assign fetch_priority = 'high'
+                    endif
+                -%}
+                <div class="grid__item">
+                    <div
+                        class="media {% if block.settings.mobile_image != blank %}small-hide{% endif %} media--transparent media--adapt"
+                        style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                      >
+                        {%- liquid
+                          assign number_of_columns = section.settings.columns_desktop
+                          assign number_of_columns_mobile = section.settings.columns_mobile
+                          assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                          assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                          assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                          assign image_width = 1
+                        -%}
+                        {% capture sizes %}
+                          (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                          (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                          (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                          calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                        {% endcapture %}
+                        {{
+                          block.settings.image
+                          | image_url: width: 3200
+                          | image_tag:
+                            widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                            sizes: sizes
+                        }}
+                        {% if block.settings.link != blank %}
+                          <a href="{{ block.settings.link }}" class="full-unstyled-link link--image"></a>
+                        {% endif %}
+                    </div>
+
+                    {% if block.settings.mobile_image != blank %}
+                        <div
+                          class="media large-up-hide medium-hide media--transparent media--adapt"
+                          style="padding-bottom: {{ 1 | divided_by: block.settings.mobile_image.aspect_ratio | times: 100 }}%;"
+                        >
+                          {{
+                            block.settings.mobile_image
+                            | image_url: width: 1500
+                            | image_tag:
+                              widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                              sizes: sizes
+                          }}
+                          {% if block.settings.link != blank %}
+                            <a href="{{ block.settings.link }}" class="full-unstyled-link link--image"></a>
+                          {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Grid images",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "t:sections.multicolumn.settings.title.default",
+        "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+          {
+            "value": "hxxl",
+            "label": "t:sections.all.heading_size.options__5.label"
+          }
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+    },
+    {
+        "type": "range",
+        "id": "columns_desktop",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 3,
+        "label": "t:sections.multicolumn.settings.columns_desktop.label"
+    },
+    {
+        "type": "select",
+        "id": "columns_mobile",
+        "options": [
+          {
+            "value": "1",
+            "label": "t:sections.multicolumn.settings.columns_mobile.options__1.label"
+          },
+          {
+            "value": "2",
+            "label": "t:sections.multicolumn.settings.columns_mobile.options__2.label"
+          }
+        ],
+        "default": "1",
+        "label": "t:sections.multicolumn.settings.columns_mobile.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "type": "item",
+        "name": "Item",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+              "type": "image_picker",
+              "id": "mobile_image",
+              "label": "Mobile Image"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Link"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid images"
+    }
+  ]
+}
+{% endschema %}

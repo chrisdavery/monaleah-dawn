@@ -1,0 +1,387 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+        padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+        padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+    }
+    .star-section svg {
+        display: block;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .star-section {
+        margin: 0 0 -1rem;
+    }
+    .testimonial__slide--inner {
+        max-width: 60rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    #shopify-section-{{ section.id }} .slideshow__autoplay.slider-button {
+        display: none;
+    }
+
+
+    .testimonial__slide--inner .star-section {
+        margin: 0 0 2rem;
+    }
+
+    .testimonial-name {
+        display: block;
+        margin-top: 2rem;
+        font-weight: 600;
+    }
+    
+    @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+        #shopify-section-{{ section.id }} .rte {
+            font-size: 2rem;
+            line-height: calc(1 + 0.6 / var(--font-body-scale));
+        }
+    }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+            
+    {%- unless section.settings.title == blank -%}
+        <div class="title-wrapper-with-link justify-center title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
+          <h2 class="title center d-block inline-richtext {{ section.settings.heading_size }}">
+            {{ section.settings.title }}
+          </h2>
+        </div>
+    {%- endunless -%}
+
+    <div class="page-width">
+        <slideshow-component
+            class="slider-mobile-gutter custom-slide-buttons slide-adaptable"
+            role="region"
+            aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
+            aria-label="{{ section.settings.accessibility_info | escape }}"
+        >
+            {%- if section.settings.auto_rotate and section.blocks.size > 1 -%}
+                <div class="slideshow__controls slideshow__controls--top slider-buttons{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
+                <button
+                    type="button"
+                    class="slider-button slider-button--prev"
+                    name="previous"
+                    aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
+                    aria-controls="Slider-{{ section.id }}"
+                >
+                    {% render 'icon-caret' %}
+                </button>
+                <div class="slider-counter slider-counter--{{ section.settings.slider_visual }}{% if section.settings.slider_visual == 'counter' or section.settings.slider_visual == 'numbers' %} caption{% endif %}">
+                    {%- if section.settings.slider_visual == 'counter' -%}
+                    <span class="slider-counter--current">1</span>
+                    <span aria-hidden="true"> / </span>
+                    <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                    <span class="slider-counter--total">{{ section.blocks.size }}</span>
+                    {%- else -%}
+                    <div class="slideshow__control-wrapper">
+                        {%- for block in section.blocks -%}
+                        <button
+                            class="slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link"
+                            aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                            aria-controls="Slider-{{ section.id }}"
+                        >
+                            {%- if section.settings.slider_visual == 'numbers' -%}
+                            {{ forloop.index -}}
+                            {%- else -%}
+                            <span class="dot"></span>
+                            {%- endif -%}
+                        </button>
+                        {%- endfor -%}
+                    </div>
+                    {%- endif -%}
+                </div>
+                <button
+                    type="button"
+                    class="slider-button slider-button--next"
+                    name="next"
+                    aria-label="{{ 'sections.slideshow.next_slideshow' | t }}"
+                    aria-controls="Slider-{{ section.id }}"
+                >
+                    {% render 'icon-caret' %}
+                </button>
+            
+                {%- if section.settings.auto_rotate -%}
+                    <button
+                    type="button"
+                    class="slideshow__autoplay slider-button{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
+                    aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
+                    >
+                    {%- render 'icon-pause' -%}
+                    {%- render 'icon-play' -%}
+                    </button>
+                {%- endif -%}
+                </div>
+            {%- endif -%}
+            <div
+                class="slideshow grid grid--1-col slider slider--everywhere{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+                id="Slider-{{ section.id }}"
+                aria-live="polite"
+                aria-atomic="true"
+                data-autoplay="{{ section.settings.auto_rotate }}"
+                data-speed="{{ section.settings.change_slides_speed }}"
+            >
+                {% for block in section.blocks %}
+                    <div
+                        class="slideshow__slide grid__item grid--1-col slider__slide"
+                        id="Slide-{{ section.id }}-{{ forloop.index }}"
+                        {{ block.shopify_attributes }}
+                        role="group"
+                        aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
+                        aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                        tabindex="-1"
+                    >
+                        <div class="testimonial__slide--inner center">
+                            <div class="star-section justify-center d-flex gap-1">
+                                {% for i in (1..5) %}
+                                    <div>
+                                        {% render 'icon-star' %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            {% if block.settings.content != blank %}
+                                <div class="rte">
+                                    {{ block.settings.content }}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.name != blank %}
+                                <span class="testimonial-name">
+                                    {{ block.settings.name }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {%- if section.blocks.size > 1 and section.settings.auto_rotate == false -%}
+                <div class="slideshow__controls slider-buttons">
+                <button
+                    type="button"
+                    class="slider-button slider-button--prev"
+                    name="previous"
+                    aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
+                    aria-controls="Slider-{{ section.id }}"
+                >
+                    {% render 'icon-caret' %}
+                </button>
+                <div class="slider-counter slider-counter--{{ section.settings.slider_visual }}{% if section.settings.slider_visual == 'counter' or section.settings.slider_visual == 'numbers' %} caption{% endif %}">
+                    {%- if section.settings.slider_visual == 'counter' -%}
+                    <span class="slider-counter--current">1</span>
+                    <span aria-hidden="true"> / </span>
+                    <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                    <span class="slider-counter--total">{{ section.blocks.size }}</span>
+                    {%- else -%}
+                    <div class="slideshow__control-wrapper">
+                        {%- for block in section.blocks -%}
+                        <button
+                            class="slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link"
+                            aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                            aria-controls="Slider-{{ section.id }}"
+                        >
+                            {%- if section.settings.slider_visual == 'numbers' -%}
+                            {{ forloop.index -}}
+                            {%- else -%}
+                            <span class="dot"></span>
+                            {%- endif -%}
+                        </button>
+                        {%- endfor -%}
+                    </div>
+                    {%- endif -%}
+                </div>
+                <button
+                    type="button"
+                    class="slider-button slider-button--next"
+                    name="next"
+                    aria-label="{{ 'sections.slideshow.next_slideshow' | t }}"
+                    aria-controls="Slider-{{ section.id }}"
+                >
+                    {% render 'icon-caret' %}
+                </button>
+            
+                {%- if section.settings.auto_rotate -%}
+                    <button
+                    type="button"
+                    class="slideshow__autoplay slider-button{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
+                    aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
+                    >
+                    {%- render 'icon-pause' -%}
+                    {%- render 'icon-play' -%}
+                    </button>
+                {%- endif -%}
+                </div>
+            {%- endif -%}
+
+            {% if section.blocks.size > 1 %}
+                <button
+                  type="button"
+                  class="slider-button slider-button--prev small-hide slider-circle--button slider-circle--prev inline-slide-button"
+                  name="previous"
+                  aria-label="{{ 'general.slider.previous_slide' | t }}"
+                >
+                    {% render 'icon-caret' %}
+                </button>
+                <button
+                  type="button"
+                  class="slider-button slider-button--next small-hide slider-circle--button inline-slide-button"
+                  name="next"
+                  aria-label="{{ 'general.slider.next_slide' | t }}"
+                >
+                    {% render 'icon-caret' %}
+                </button>
+            {% endif %}
+        </slideshow-component>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "t:sections.multicolumn.settings.title.default",
+        "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+          {
+            "value": "hxxl",
+            "label": "t:sections.all.heading_size.options__5.label"
+          }
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+    },
+    {
+        "type": "select",
+        "id": "slider_visual",
+        "options": [
+          {
+            "value": "dots",
+            "label": "t:sections.slideshow.settings.slider_visual.options__2.label"
+          },
+          {
+            "value": "counter",
+            "label": "t:sections.slideshow.settings.slider_visual.options__1.label"
+          },
+          {
+            "value": "numbers",
+            "label": "t:sections.slideshow.settings.slider_visual.options__3.label"
+          }
+        ],
+        "default": "counter",
+        "label": "t:sections.slideshow.settings.slider_visual.label"
+    },
+    {
+        "type": "checkbox",
+        "id": "auto_rotate",
+        "label": "t:sections.slideshow.settings.auto_rotate.label",
+        "default": false
+    },
+    {
+        "type": "range",
+        "id": "change_slides_speed",
+        "min": 3,
+        "max": 9,
+        "step": 2,
+        "unit": "s",
+        "label": "t:sections.slideshow.settings.change_slides_speed.label",
+        "default": 5
+    },
+    {
+        "type": "text",
+        "id": "accessibility_info",
+        "label": "t:sections.slideshow.settings.accessibility.label",
+        "info": "t:sections.slideshow.settings.accessibility.info",
+        "default": "t:sections.slideshow.settings.accessibility.default"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content",
+            },
+            {
+                "type": "text",
+                "id": "name",
+                "label": "Name"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

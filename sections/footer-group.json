@@ -1,0 +1,63 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand_information_xtTR7H": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        },
+        "link_list_Y94qLn": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Need Help",
+            "menu": "footer"
+          }
+        },
+        "newsletter_tGgiRk": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "A Welcome Courtesy",
+            "subtext": "<p>Join our community and receive 10% off your first tribute.</p>",
+            "enable_follow_on_shop": false,
+            "show_social": false
+          }
+        }
+      },
+      "block_order": [
+        "brand_information_xtTR7H",
+        "link_list_Y94qLn",
+        "newsletter_tGgiRk"
+      ],
+      "custom_css": [
+        "@media (min-width: 990px) {.footer__blocks-wrapper .footer-block:first-child, .footer__blocks-wrapper .footer-block:nth-child(2) {width: calc(18% - var(--grid-desktop-horizontal-spacing) * 3 / 4); } .newsletter-flex .button {white-space: nowrap; }}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-c98e53d8-c62e-4fb0-8619-8250810da9cd",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,545 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "overlayed_images_7qihiB": {
+      "type": "overlayed-images",
+      "blocks": {
+        "item_t6zNf9": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/personalized-pet-memorial-garden-stone-heart.jpg",
+            "title": "",
+            "heading_size": "h1",
+            "title_alignment": "left",
+            "link_text": "",
+            "link": "shopify://products/personalized-photo-pet-memorial-stone-sympathy-gift",
+            "alignment": "right",
+            "second_image_link": ""
+          }
+        },
+        "item_8Pt3Qt": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Pic_1_8.jpg",
+            "title": "",
+            "heading_size": "h1",
+            "title_alignment": "left",
+            "link_text": "",
+            "link": "shopify://products/personalized-photo-pet-memorial-stone-sympathy-gift",
+            "alignment": "right",
+            "second_image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_t6zNf9",
+        "item_8Pt3Qt"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "narrow_width": false,
+        "title": "",
+        "heading_size": "h1",
+        "columns_desktop": 1,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-20d8814a-7670-48a1-b51e-6a279c025956",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "overlayed_images_ayUNLB": {
+      "type": "overlayed-images",
+      "blocks": {
+        "item_kabMzT": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_1_6.jpg",
+            "title": "",
+            "heading_size": "h1",
+            "title_alignment": "left",
+            "link_text": "",
+            "link": "",
+            "alignment": "left",
+            "second_image_link": ""
+          }
+        },
+        "item_FDCyDg": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/outdoor-pet-memorial-garden-stones-collection.jpg",
+            "title": "",
+            "heading_size": "h1",
+            "title_alignment": "left",
+            "link_text": "",
+            "link": "#",
+            "alignment": "center",
+            "second_image": "shopify://shop_images/slate-pet-photo-memorial-plaque-indoor.jpg",
+            "second_image_link": "shopify://products/personalized-photo-pet-memorial-plaque-dog-gift"
+          }
+        }
+      },
+      "block_order": [
+        "item_kabMzT",
+        "item_FDCyDg"
+      ],
+      "custom_css": [
+        "@media (min-width: 750px) {.grid--2-col-desktop .grid__item:first-child {width: calc(55% - var(--grid-desktop-horizontal-spacing) / 2); max-width: calc(55% - var(--grid-desktop-horizontal-spacing) / 2); } .grid--2-col-desktop .grid__item:last-child {width: calc(45% - var(--grid-desktop-horizontal-spacing) / 2); max-width: calc(45% - var(--grid-desktop-horizontal-spacing) / 2); }}",
+        "@media (max-width: 749px) {.grid {flex-direction: column-reverse; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "narrow_width": false,
+        "title": "",
+        "heading_size": "h1",
+        "columns_desktop": 2,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-20d8814a-7670-48a1-b51e-6a279c025956",
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "grid_images_34g7hy": {
+      "type": "grid-images",
+      "blocks": {
+        "item_gcFcAb": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_1.1_1.jpg",
+            "link": "#"
+          }
+        },
+        "item_a7edEF": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_2.1_3.jpg",
+            "link": "#"
+          }
+        },
+        "item_hVU89A": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_3.1_1.jpg",
+            "link": "shopify://collections/garden-stones"
+          }
+        },
+        "item_CGx4EK": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_4.1_2.jpg",
+            "link": "#"
+          }
+        },
+        "item_gQFnBh": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_5.1_1.jpg",
+            "link": "#"
+          }
+        },
+        "item_WzbAXY": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_6.4_1.jpg",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "item_gcFcAb",
+        "item_a7edEF",
+        "item_hVU89A",
+        "item_CGx4EK",
+        "item_gQFnBh",
+        "item_WzbAXY"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "Thoughtful Memorial Gifts",
+        "heading_size": "h1",
+        "columns_desktop": 2,
+        "columns_mobile": "2",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "testimonials_7DCeWR": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_xDfWzi": {
+          "type": "testimonial",
+          "settings": {
+            "content": "<p><em>This was a gift for a friend who had lost her beloved dog. It brought her to tears with how beautiful the stone was. It was tasteful, thoughtful, and appropriate. She was happy to place it in her dog's once favorite place.</em></p>",
+            "name": "- Crystal"
+          }
+        },
+        "testimonial_Chiy6X": {
+          "type": "testimonial",
+          "settings": {
+            "content": "<p><em>I am super happy with my purchase it’s BEAUTIFUL!!!!! I ordered it as a memorial stone for my mother’s grave. She definitely brought my vision to life. Leah is a fast response creator and pays attention to detail & an extremely fast shipper. So happy with her work and the quality is STUNNING!</em></p>",
+            "name": "- Jennifer"
+          }
+        },
+        "testimonial_8PE4GF": {
+          "type": "testimonial",
+          "settings": {
+            "content": "<p><em>This is my second order as this was absolutely beautiful! This was the perfect, heartwarming gift in which one will always have to remember a cherished loved one by. Thank you so much for creating such a lovely memorial gift.</em></p>",
+            "name": "- Robin"
+          }
+        },
+        "testimonial_PJWx9z": {
+          "type": "testimonial",
+          "settings": {
+            "content": "<p><em>Bought for my cousin who lost her cat unexpectedly. She was touched when received and perfect timing as she just finished a scrapbook of him. I bought the stand to display it. This is such a heartfelt perfect gift for those who lose a pet.</em></p>",
+            "name": "- Clare"
+          }
+        },
+        "testimonial_eDeqcx": {
+          "type": "testimonial",
+          "settings": {
+            "content": "<p><em>Absolutely exceeded my expectations. Got here really quick and the quality is great. Losing a dog is a really tough experience to go through and this will help us memorialize him with this in our memorial garden.</em></p>",
+            "name": "- Marks"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_xDfWzi",
+        "testimonial_Chiy6X",
+        "testimonial_8PE4GF",
+        "testimonial_PJWx9z",
+        "testimonial_eDeqcx"
+      ],
+      "custom_css": [
+        ".slider-button--next {right: 3rem;}",
+        ".slider-button--prev {left: 3rem;}",
+        "@media (max-width: 749px) {.title-wrapper--no-top-margin {max-width: 31rem; margin-left: auto; margin-right: auto; }}"
+      ],
+      "settings": {
+        "title": "What Our Customers Are Saying",
+        "heading_size": "h1",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 7,
+        "accessibility_info": "Slideshow about our brand",
+        "color_scheme": "scheme-c98e53d8-c62e-4fb0-8619-8250810da9cd",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "two_image_cta_DffnK7": {
+      "type": "two-image-cta",
+      "blocks": {
+        "item_j7qHQB": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_11_3.jpg"
+          }
+        },
+        "item_FeTjbE": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_12_2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "item_j7qHQB",
+        "item_FeTjbE"
+      ],
+      "custom_css": [
+        "@media (max-width: 989px) {[class*=\"-padding\"] {padding-top: 28px; }}"
+      ],
+      "settings": {
+        "title": "Forget-Me-Nots",
+        "heading_size": "h1",
+        "first_content": "<p>LET LOVED ONES KNOW THEY'RE NOT ALONE IN THEIR GRIEF.</p>",
+        "second_content": "<p>Our easy-to-send sympathy gifts provide comfort and support during difficult times.</p>",
+        "button_text": "SHOP NOW",
+        "button_link": "#",
+        "color_scheme": "",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "overlayed_images_a7YbEJ": {
+      "type": "overlayed-images",
+      "blocks": {
+        "item_pgemHC": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_3.png",
+            "title": "",
+            "heading_size": "h1",
+            "title_alignment": "left",
+            "link_text": "",
+            "link": "#",
+            "alignment": "right",
+            "second_image_link": ""
+          }
+        },
+        "item_GfirBr": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_2_10_1.jpg",
+            "title": "",
+            "heading_size": "h1",
+            "title_alignment": "left",
+            "link_text": "",
+            "link": "",
+            "alignment": "center",
+            "second_image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_pgemHC",
+        "item_GfirBr"
+      ],
+      "custom_css": [
+        ".overlay__box {justify-content: flex-end;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "narrow_width": false,
+        "title": "Memorial Plaques for Loved Ones",
+        "heading_size": "h1",
+        "columns_desktop": 2,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-20d8814a-7670-48a1-b51e-6a279c025956",
+        "padding_top": 56,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_Cia6bd": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XWEJCb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Rainbow Bridge Memorial Gifts",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XWEJCb"
+      ],
+      "custom_css": [],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 24
+      }
+    },
+    "overlayed_images_dicGBH": {
+      "type": "overlayed-images",
+      "blocks": {
+        "item_cdFnTW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pic_1_2_2.png",
+            "title": "",
+            "heading_size": "h1",
+            "title_alignment": "left",
+            "link_text": "",
+            "link": "#",
+            "alignment": "left",
+            "second_image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_cdFnTW"
+      ],
+      "settings": {
+        "full_width": false,
+        "narrow_width": false,
+        "title": "",
+        "heading_size": "h1",
+        "columns_desktop": 1,
+        "columns_mobile": "1",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "grid_images_nogap_AMe8H6": {
+      "type": "grid-images-nogap",
+      "blocks": {
+        "item_gNDWGn": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/png_-_2025-02-06T043529.565.png",
+            "link": "#"
+          }
+        },
+        "item_jrFGEN": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/png_-_2025-02-06T043529.565.png",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "item_gNDWGn",
+        "item_jrFGEN"
+      ],
+      "disabled": true,
+      "settings": {
+        "narrow_width": false,
+        "title": "Rainbow Bridge Memorial Gifts",
+        "heading_size": "h1",
+        "first_content": "",
+        "second_content": "",
+        "button_text": "",
+        "button_link": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 32
+      }
+    },
+    "grid_images_nogap_tC7heQ": {
+      "type": "grid-images-nogap",
+      "blocks": {
+        "item_BRJNdF": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/png_-_2025-02-06T043529.565.png",
+            "link": "#"
+          }
+        },
+        "item_YtGLz4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/png_-_2025-02-06T052301.525.png",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "item_BRJNdF",
+        "item_YtGLz4"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "narrow_width": false,
+        "title": "",
+        "heading_size": "h1",
+        "first_content": "",
+        "second_content": "",
+        "button_text": "",
+        "button_link": "",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "overlayed_images_qnWyMy": {
+      "type": "overlayed-images",
+      "blocks": {
+        "item_TpAjea": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/3_1_1.jpg",
+            "title": "",
+            "heading_size": "h1",
+            "title_alignment": "left",
+            "link_text": "",
+            "link": "#",
+            "alignment": "left",
+            "second_image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_TpAjea"
+      ],
+      "settings": {
+        "full_width": false,
+        "narrow_width": false,
+        "title": "",
+        "heading_size": "h1",
+        "columns_desktop": 1,
+        "columns_mobile": "1",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_cGrCaA": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_6iHC94": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "We believe",
+            "text_style": "subtitle",
+            "text_size": "small"
+          }
+        },
+        "heading_zdnkVz": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "\"We are in the smiles business, not gifts business\"",
+            "heading_size": "h1"
+          }
+        },
+        "text_Vdeiac": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Experiencing the loss of a beloved pet or loved one is incredibly difficult. When words aren't enough, let our heartfelt memorial gifts express your love and remembrance. At <strong>Monaleah</strong>, we understand every loss is unique, and so too are our personalized remembrance gifts, designed to honor their memory and find comfort during this challenging time.</p><p>For pet loss, we have thoughtfully curated sympathy gifts that say \"you're not alone,\" which include dog memorial stones, pet grave markers, memorial plaques, wind chimes, and rainbow bridge dog memorial gifts.</p><p>We also carry sympathy gifts for the loss of mom, dad, child, grandparent, and friend. We offer a variety of ways to honor your loved ones, including personalized memorial garden stones, wind chimes, candles, memorial picture frames, and ornaments. Find comfort in our special collection of cardinal wind chimes and angel baby keepsakes. And create a lasting tribute and keep their memory alive.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_6iHC94",
+        "heading_zdnkVz",
+        "text_Vdeiac"
+      ],
+      "custom_css": [
+        ".rich-text__blocks {max-width: 88rem;}",
+        ".rich-text__caption,strong {color: rgb(var(--color-accent-1));}",
+        ".rich-text__heading {font-weight: normal; max-width: 58rem; margin-top: 0 !important;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "overlayed_images_7qihiB",
+    "overlayed_images_ayUNLB",
+    "grid_images_34g7hy",
+    "testimonials_7DCeWR",
+    "two_image_cta_DffnK7",
+    "overlayed_images_a7YbEJ",
+    "rich_text_Cia6bd",
+    "overlayed_images_dicGBH",
+    "grid_images_nogap_AMe8H6",
+    "grid_images_nogap_tC7heQ",
+    "overlayed_images_qnWyMy",
+    "rich_text_cGrCaA"
+  ]
+}

@@ -1,0 +1,202 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "hide_title": false,
+        "color_scheme": "",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_JrxNmH": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_yMKn7E": {
+          "type": "heading",
+          "settings": {
+            "heading": "This Month's Tribute Impact",
+            "heading_size": "h1"
+          }
+        },
+        "heading_yaCmPF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Every photo tribute shared this month unlocks a $3 donation toward medical care for senior dogs still waiting for a home.",
+            "heading_size": "h1"
+          }
+        },
+        "heading_tFhzC4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Benefiting: The Grey Muzzle Organization",
+            "heading_size": "h2"
+          }
+        },
+        "text_8RbLnQ": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Your tribute honors their memory while helping another life heal.</strong>",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_yMKn7E",
+        "heading_yaCmPF",
+        "heading_tFhzC4",
+        "text_8RbLnQ"
+      ],
+      "custom_css": [
+        ".banner__box {border-radius: 2.5rem; outline: 3px solid #dbd8c6; outline-offset: -1rem;}",
+        ".h1 {font-size: 3.2rem; font-weight: 600;}",
+        ".h1 + .h1 {margin-top: 3rem;}",
+        ".banner__box {max-width: 84rem;}",
+        ".h2 {margin-top: 2rem;}",
+        ".subtitle {margin-top: 4rem;}",
+        "@media (max-width: 749px) {.banner__content {padding: 2rem 1.5rem; } .banner__box {background: rgb(var(--color-background)); } .h1 {font-size: 2rem; } .h1 + .h1 {margin-top: 2.5rem; } .h2 {font-size: 1.6rem; } .subtitle {font-size: 1.4rem; } .banner__box {padding-inline: 2.5rem; }}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/background_for_banner_2.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-a7a9cddf-086f-4bf4-8c08-dd1480b64937",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "custom_liquid_deJrmC": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".powerful-formbuilder-open {min-height: calc(5.5rem + var(--buttons-border-width) * 2); font-size: 1.8rem; font-weight: 500;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"page-width\">\n<button class=\"powerful-formbuilder-open button button--primary button--full-width\" data-id=\"MTI2NDAz\">Share Your Tribute</button>\n</div>",
+        "color_scheme": "",
+        "padding_top": 72,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_ckBb6d": {
+      "type": "rich-text",
+      "blocks": {
+        "text_iJbQCJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Takes less than 60 seconds. <strong>Help us help them.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_iJbQCJ"
+      ],
+      "custom_css": [
+        ".rich-text__wrapper {width: 100%;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 52
+      }
+    },
+    "tribute_grid_7qQw64": {
+      "type": "tribute-grid",
+      "custom_css": [
+        "@media (min-width: 990px) {.multicolumn-list__item:only-child {max-width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);}}"
+      ],
+      "name": "Tribute Grid",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 72
+      }
+    },
+    "rich_text_8L3nnz": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_LRxVWV": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Impact",
+            "heading_size": "h1"
+          }
+        },
+        "heading_YVGGi7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Over $1,500 Donated to Vet Bills This Year",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LRxVWV",
+        "heading_YVGGi7"
+      ],
+      "custom_css": [
+        ".rich-text__heading + .rich-text__heading {margin-top: 0.5rem;}",
+        ".rich-text__blocks {max-width: 100%;}",
+        ".rich-text__wrapper {border-bottom: 0.1rem solid #ccc; padding-bottom: 5rem;}",
+        "@media (min-width: 990px) {.rich-text__wrapper {width: 100%; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-c98e53d8-c62e-4fb0-8619-8250810da9cd",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_GAGgWp": {
+      "type": "custom-liquid",
+      "name": "JS Script",
+      "settings": {
+        "custom_liquid": "<script>\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  if (window.location.search.includes(\"?open=tribute_form\")) {\n    const formButton = document.querySelector(\".powerful-formbuilder-open\");\n    if (formButton) formButton.click();\n  }\n});\n</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_JrxNmH",
+    "custom_liquid_deJrmC",
+    "rich_text_ckBb6d",
+    "tribute_grid_7qQw64",
+    "rich_text_8L3nnz",
+    "custom_liquid_GAGgWp"
+  ]
+}

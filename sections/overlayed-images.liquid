@@ -1,0 +1,558 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- style -%}
+    {% for block in section.blocks %}
+        #Overlay-{{ block.id }}::before,
+        #Overlay-{{ block.id }} .overlay__media::before {
+            padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;
+            content: '';
+            display: block;
+        }
+        
+        {% if block.settings.second_image != blank %}
+            #Overlay-second-{{ block.id }}::before,
+            #Overlay-second-{{ block.id }} .overlay__media::before {
+                padding-bottom: {{ 1 | divided_by: block.settings.second_image.aspect_ratio | times: 100 }}%;
+                content: '';
+                display: block;
+            }
+        {% endif %}
+    {% endfor %}
+
+    .overlay-image {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        z-index: auto;
+        isolation: isolate;
+    }
+
+    .overlay__content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+    }
+
+    .overlay__media {
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .overlay__title {
+        font-weight: normal;
+        margin: 0;
+    }
+    .overlay__box {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .overlay__box.w-top-title {
+        justify-content: space-between;
+    }
+    .overlay-item-left.link-title {
+        margin-right: auto;
+    }
+    .overlay-item-center.link-title {
+        margin: auto;
+    }
+    .overlay-item-right.link-title {
+        margin-left: auto;
+    }
+
+    .overlay__link:after {
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: block;
+        z-index: 1;
+    }
+    #shopify-section-{{ section.id }} .grid {
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .title-wrapper-with-link .title {
+        color: rgb(var(--color-shadow));
+    }
+    .overlay-image+.overlay-image {
+      margin-top: calc(var(--grid-desktop-vertical-spacing) / 2);
+    }
+
+    @media (max-width: 749px) {
+        .overlay__title {
+            font-size: calc(var(--font-heading-scale)* 1.6rem);
+        }
+        .overlay__item {
+          opacity: 0;
+        }
+        .overlay-image+.overlay-image {
+          margin-top: calc(var(--grid-mobile-vertical-spacing) / 2);
+        }
+
+        {% for block in section.blocks %}
+          {% if block.settings.mobile_image != blank %}
+            #Overlay-{{ block.id }}::before,
+            #Overlay-{{ block.id }} .overlay__media::before {
+                padding-bottom: {{ 1 | divided_by: block.settings.mobile_image.aspect_ratio | times: 100 }}%;
+                content: '';
+                display: block;
+            }
+          {% endif %}
+          {% if block.settings.mobile_second_image != blank %}
+            #Overlay-second-{{ block.id }}::before,
+            #Overlay-second-{{ block.id }} .overlay__media::before {
+                padding-bottom: {{ 1 | divided_by: block.settings.mobile_second_image.aspect_ratio | times: 100 }}%;
+                content: '';
+                display: block;
+            }
+          {% endif %}
+      {% endfor %}
+    }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="page-width {% if section.settings.full_width == true %}page-width--full{% endif %}
+      {% if section.settings.narrow_width == true and section.settings.full_width == false %}
+       page-width--narrow
+      {% endif %}
+      ">
+        {%- unless section.settings.title == blank -%}
+            <div class="title-wrapper-with-link justify-center title-wrapper--no-top-margin overlayed-images__title">
+              <h2 class="title center inline-richtext {{ section.settings.heading_size }}">
+                {{ section.settings.title }}
+              </h2>
+            </div>
+        {%- endunless -%}
+
+        <div class="grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop">
+            {% for block in section.blocks %}
+
+                  
+                <div class="grid__item" {{ block.shopify_attributes }}>
+                    {% if block.settings.image != blank %}
+                      {%- liquid
+                        assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio
+                        assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+                        assign fetch_priority = 'auto'
+                        if section.index == 1
+                          assign fetch_priority = 'high'
+                        endif
+                      -%}
+                        <div class="overlay-image" id="Overlay-{{ block.id }}">
+                            <div class="overlay__media {% if block.settings.mobile_image != blank %}small-hide{% endif %} media"> 
+                                {% assign desktop_columns = section.settings.columns_desktop %}
+                                {% assign mobile_columns = section.settings.columns_mobile %}
+                                {% assign media_width = 1 %}
+                                
+                                {%- capture sizes -%}
+                                  (min-width: 1800px) {{ 1600 | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px,(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 10rem)
+                                {%- endcapture -%}
+                                  {{
+                                    block.settings.image
+                                    | image_url: width: 1600
+                                    | image_tag:
+                                      width: block.settings.image.width,
+                                      height: image_height,
+                                      sizes: sizes,
+                                      widths: widths,
+                                      fetchpriority: fetch_priority
+                                  }}
+                                  {% if block.settings.link_text == blank and block.settings.link != blank %}
+                                    <a href="{{ block.settings.link }}" class="full-unstyled-link link--image"></a>
+                                  {% endif %}
+                            </div>
+                            {% if block.settings.mobile_image != blank %}
+                              {%- liquid
+                                assign image_height = block.settings.mobile_image.width | divided_by: block.settings.mobile_image.aspect_ratio
+                                assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+            
+                                assign fetch_priority = 'auto'
+                                if section.index == 1
+                                  assign fetch_priority = 'high'
+                                endif
+                              -%}
+
+                              <div class="overlay__media media large-up-hide medium-hide">
+                                {% assign desktop_columns = section.settings.columns_desktop %}
+                                {% assign mobile_columns = section.settings.columns_mobile %}
+                                {% assign media_width = 1 %}
+                                
+                                {%- capture sizes -%}
+                                  (min-width: 1800px) {{ 1500 | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px,(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 10rem)
+                                {%- endcapture -%}
+
+                                  {{
+                                    block.settings.mobile_image
+                                    | image_url: width: 1000
+                                    | image_tag:
+                                      width: block.settings.mobile_image.width,
+                                      height: image_height,
+                                      sizes: sizes,
+                                      widths: widths,
+                                      fetchpriority: fetch_priority
+                                  }}
+                                  {% if block.settings.link_text == blank and block.settings.link != blank %}
+                                    <a href="{{ block.settings.link }}" class="full-unstyled-link link--image"></a>
+                                  {% endif %}
+                              </div>
+                            {% endif %}
+                            {% if block.settings.link_text != blank %}
+                                <div class="overlay__content">
+                                    <div class="overlay__box {% if block.settings.title != blank %}w-top-title{% endif %}">
+                                        {% if block.settings.title %}
+                                            <div class="overlay__item overlay-item-{{ block.settings.title_alignment }}">
+                                                <h2 class="{{ block.settings.heading_size }} overlay__title">{{ block.settings.title }}</h2>
+                                            </div>
+                                        {% endif %}
+                                        {% if block.settings.link_text != blank %}
+                                            <div class="overlay__item link-title overlay-item-{{ block.settings.alignment }}">
+                                                <h3 class="{{ block.settings.heading_size }} center overlay__title">
+                                                    <a href="{{ block.settings.link }}" class="overlay__link full-unstyled-link">
+                                                        {{ block.settings.link_text }}
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if block.settings.second_image != blank %}
+                      {%- liquid
+                        assign image_height = block.settings.second_image.width | divided_by: block.settings.second_image.aspect_ratio
+                        assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+    
+                        assign fetch_priority = 'auto'
+                        if section.index == 1
+                          assign fetch_priority = 'high'
+                        endif
+                      -%}
+                      
+                      <div class="overlay-image" id="Overlay-second-{{ block.id }}">
+                          <div class="overlay__media {% if block.settings.mobile_second_image != blank %}small-hide{% endif %} media">
+                                {% assign desktop_columns = section.settings.columns_desktop %}
+                                {% assign mobile_columns = section.settings.columns_mobile %}
+                                {% assign media_width = 1 %}
+                                
+                                {%- capture sizes -%}
+                                  (min-width: 1800px) {{ 1500 | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px,(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 10rem)
+                                {%- endcapture -%}
+                                {{
+                                  block.settings.second_image
+                                  | image_url: width: 1500
+                                  | image_tag:
+                                    width: block.settings.second_image.width,
+                                    height: image_height,
+                                    sizes: sizes,
+                                    widths: widths,
+                                    fetchpriority: fetch_priority
+                                }}
+                                {% if block.settings.link_text == blank and block.settings.second_image_link != blank %}
+                                  <a href="{{ block.settings.second_image_link }}" class="full-unstyled-link link--image"></a>
+                                {% endif %}
+                          </div>
+                          {% if block.settings.mobile_second_image != blank %}
+                            {%- liquid
+                              assign image_height = block.settings.mobile_second_image.width | divided_by: block.settings.mobile_second_image.aspect_ratio
+                              assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+                              assign fetch_priority = 'auto'
+                              if section.index == 1
+                                assign fetch_priority = 'high'
+                              endif
+                            -%}
+
+                            {% assign desktop_columns = section.settings.columns_desktop %}
+                            {% assign mobile_columns = section.settings.columns_mobile %}
+                            {% assign media_width = 1 %}
+                            
+                            {%- capture sizes -%}
+                              (min-width: 1800px) {{ 1500 | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px,(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 10rem)
+                            {%- endcapture -%}
+
+                            <div class="overlay__media media large-up-hide medium-hide">
+                              {%- liquid
+                                    assign sizes = full_width
+                                -%}
+                                {{
+                                  block.settings.mobile_second_image
+                                  | image_url: width: 1000
+                                  | image_tag:
+                                    width: block.settings.mobile_second_image.width,
+                                    alt: block.settings.mobile_second_image.alt,
+                                    height: image_height,
+                                    sizes: sizes,
+                                    widths: widths,
+                                    fetchpriority: fetch_priority
+                                }}
+                                {% if block.settings.link_text == blank and block.settings.link != blank %}
+                                  <a href="{{ block.settings.link }}" class="full-unstyled-link link--image"></a>
+                                {% endif %}
+                            </div>
+                          {% endif %}
+                      </div>
+                  {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Overlayed Images",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "narrow_width",
+      "label": "Narrow width",
+      "default": false
+    },
+    {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "t:sections.multicolumn.settings.title.default",
+        "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+          {
+            "value": "hxxl",
+            "label": "t:sections.all.heading_size.options__5.label"
+          }
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+    },
+    {
+        "type": "range",
+        "id": "columns_desktop",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 3,
+        "label": "t:sections.multicolumn.settings.columns_desktop.label"
+    },
+    {
+        "type": "select",
+        "id": "columns_mobile",
+        "options": [
+          {
+            "value": "1",
+            "label": "t:sections.multicolumn.settings.columns_mobile.options__1.label"
+          },
+          {
+            "value": "2",
+            "label": "t:sections.multicolumn.settings.columns_mobile.options__2.label"
+          }
+        ],
+        "default": "1",
+        "label": "t:sections.multicolumn.settings.columns_mobile.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "type": "item",
+        "name": "Item",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+              "type": "image_picker",
+              "id": "mobile_image",
+              "label": "Mobile Image"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "select",
+                "id": "heading_size",
+                "options": [
+                  {
+                    "value": "h2",
+                    "label": "t:sections.all.heading_size.options__1.label"
+                  },
+                  {
+                    "value": "h1",
+                    "label": "t:sections.all.heading_size.options__2.label"
+                  },
+                  {
+                    "value": "h0",
+                    "label": "t:sections.all.heading_size.options__3.label"
+                  },
+                  {
+                    "value": "hxl",
+                    "label": "t:sections.all.heading_size.options__4.label"
+                  },
+                  {
+                    "value": "hxxl",
+                    "label": "t:sections.all.heading_size.options__5.label"
+                  }
+                ],
+                "default": "h1",
+                "label": "t:sections.all.heading_size.label"
+            },
+            {
+                "type": "select",
+                "id": "title_alignment",
+                "options": [
+                    {
+                      "value": "left",
+                      "label": "Left"
+                    },
+                    {
+                      "value": "center",
+                      "label": "Center"
+                    },
+                    {
+                        "value": "right",
+                        "label": "Right"
+                    } 
+                  ],
+                "default": "left",
+                "label": "Left"
+            },
+            {
+                "type": "text",
+                "id": "link_text",
+                "label": "Link Text"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Link"
+            },
+            {
+                "type": "select",
+                "id": "alignment",
+                "options": [
+                    {
+                      "value": "left",
+                      "label": "Left"
+                    },
+                    {
+                      "value": "center",
+                      "label": "Center"
+                    },
+                    {
+                        "value": "right",
+                        "label": "Right"
+                    } 
+                  ],
+                "default": "left",
+                "label": "Left"
+            },
+            {
+              "type": "image_picker",
+              "id": "second_image",
+              "label": "Second Image"
+            },
+            {
+              "type": "image_picker",
+              "id": "mobile_second_image",
+              "label": "Mobile Second Image"
+            },
+            {
+              "type": "url",
+              "id": "second_image_link",
+              "label": "Second Image Link"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Overlayed Images"
+    }
+  ]
+}
+{% endschema %}

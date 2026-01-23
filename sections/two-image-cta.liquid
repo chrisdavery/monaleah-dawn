@@ -1,0 +1,269 @@
+{%- style -%}
+    .section-{{ section.id }}-padding {
+        padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+        padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+    }
+    .grid--two-item {
+        width: 100%;
+    }
+    .content-two-cta {
+        margin-top: 3rem;
+    }
+    .content-two {
+        line-height: calc(1 + 0.4 / var(--font-body-scale));
+    }
+    .content-two-1 {
+        margin-top: 0;
+    }
+
+    .content-two-2 {
+        margin-top: 2rem;
+    }
+
+    @media (min-width: 990px) {
+        .grid--two-main .grid__item:first-child {
+            width: calc(57% - var(--grid-desktop-horizontal-spacing) / 2);
+            max-width: calc(57% - var(--grid-desktop-horizontal-spacing) / 2);
+        }
+
+        .grid--two-main .grid__item:last-child {
+            width: calc(43% - var(--grid-desktop-horizontal-spacing) / 2);
+            max-width: calc(43% - var(--grid-desktop-horizontal-spacing) / 2);
+        }
+        .content-two {
+            font-size: 2.6rem;
+            line-height: calc(1 + 0.6 / var(--font-body-scale));
+            max-width: 43rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .content-two-1 {
+            margin-top: 6rem;
+        }
+
+        .content-two-2 {
+            margin-top: 5rem;
+        }
+        .content--two-image {
+            position: sticky;
+            top: 0;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+    }
+
+    @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+        .grid--two-wrapper {
+            gap: 1.5rem;
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 989px) {
+        .grid--two-main {
+            flex-direction: column-reverse;
+        }
+        .grid--two-main .title-wrapper-with-link.large-up-hide {
+            margin-bottom: 1rem;
+        }
+        .content-two {
+            font-size: 1.8rem;
+        }
+    }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="page-width">
+        <div class="grid grid--two-main grid--1-col-tablet-down grid--2-col-desktop">
+            <div class="grid__item">
+                <div class="center content--two-image">
+                    {%- unless section.settings.title == blank -%}
+                        <div class="title-wrapper-with-link small-hide medium-hide justify-center title-wrapper--no-top-margin overlayed-images__title">
+                          <h2 class="title center inline-richtext {{ section.settings.heading_size }}">
+                            {{ section.settings.title }}
+                          </h2>
+                        </div>
+                    {%- endunless -%}
+                    {% if section.settings.first_content != blank %}
+                        <div class="content-two rte content-two-1">
+                            {{ section.settings.first_content }}
+                        </div>
+                    {% endif %}
+                    {% if section.settings.second_content != blank %}
+                        <div class="content-two rte content-two-2">
+                            {{ section.settings.second_content }}
+                        </div>
+                    {% endif %}
+
+                    {% if section.settings.button_text != blank %}
+                        <div class="content-two-cta center">
+                            <a href="{{ section.settings.button_link }}" class="button button--primary button--rounded button--large">{{ section.settings.button_text }}</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="grid__item">
+                {%- unless section.settings.title == blank -%}
+                    <div class="title-wrapper-with-link large-up-hide justify-center title-wrapper--no-top-margin overlayed-images__title">
+                      <h2 class="title center inline-richtext {{ section.settings.heading_size }}">
+                        {{ section.settings.title }}
+                      </h2>
+                    </div>
+                {%- endunless -%}
+                <div class="d-flex grid--two-wrapper">
+                    {%- liquid
+                        assign highest_ratio = 0
+                        for block in section.blocks
+                          if block.settings.image.height > highest_ratio
+                            assign highest_ratio = block.settings.image.aspect_ratio
+                          endif
+                        endfor
+                    -%}
+                    {% for block in section.blocks %}
+                      {% assign desktop_columns = 2 %}
+                      {% assign mobile_columns = 2 %}
+                      {% assign media_width = 1 %}
+
+                      {%- capture sizes -%}
+                        (min-width: 1800px) {{ 1500 | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px,(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 4rem)
+                      {%- endcapture -%}
+
+                        <div class="grid--two-item">
+                            <div
+                                class="media media--transparent media--adapt"
+                                style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
+                              >
+                                {{
+                                  block.settings.image
+                                  | image_url: width: 500
+                                  | image_tag:
+                                    widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                    sizes: sizes
+                                }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Two Image CTA",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "t:sections.multicolumn.settings.title.default",
+        "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+          {
+            "value": "hxxl",
+            "label": "t:sections.all.heading_size.options__5.label"
+          }
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+    },
+    {
+        "type": "richtext",
+        "id": "first_content",
+        "label": "First Content"
+    },
+    {
+        "type": "richtext",
+        "id": "second_content",
+        "label": "Second Content"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "type": "item",
+        "name": "Item",
+        "limit": 2,
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Image CTA"
+    }
+  ]
+}
+{% endschema %}

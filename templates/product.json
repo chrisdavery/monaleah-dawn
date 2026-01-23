@@ -1,0 +1,174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_wTwRwJ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "zepto_product_personalizer_product_personalizer_page_WgAVni": {
+          "type": "shopify://apps/zepto-product-personalizer/blocks/product_personalizer_page/7411210d-7b32-4c09-9455-e129e3be4729",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "custom_liquid_TGhhTc": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% style %}\n.note-flex {\n    width: 100%;\n    justify-content: space-between;\n}\n.note-flex .image-note-placeholder {\n    width: 8rem;\n    display: block;\n    height: auto;\n}\n.hand-note-content {\n  max-height: 0;\n  overflow: hidden;\n  transition: max-height 0.35s ease, opacity 0.25s ease;\n  opacity: 0;\n  padding: calc(.1rem + var(--inputs-border-width));\n}\n.image-note {\n    margin-top: 1rem;\n    margin-left: 2.8rem;\n}\n\n.image-note img, .image-note svg {\n    max-width: 100%;\n    display: block;\n    width: 10rem;\n    height: auto;\n}\n.hand-note-content.is-open {\n  max-height: 500px; /* enough to fit textarea */\n  opacity: 1;\n}\n.hand-note:has(.is-open) .image-note {\n    display: none;\n}\n{% endstyle %}\n\n{%- assign product_form_id = 'product-form-' | append: section.id -%}\n<div class=\"hand-note\" hidden>\n    <div class=\"product-form__input\">\n        <label class=\"form__label\">Sending this as a gift?</label>\n        <label for=\"noteTick\" class=\"notetick__label\">\n            <input\n            type=\"checkbox\"\n            name=\"note_tick\"\n            id=\"noteTick\"\n            >\n            <svg\n                width=\"1.6rem\"\n                height=\"1.6rem\"\n                viewBox=\"0 0 16 16\"\n                aria-hidden=\"true\"\n                focusable=\"false\"\n            >\n                <rect width=\"16\" height=\"16\" stroke=\"currentColor\" fill=\"none\" stroke-width=\"1\"></rect>\n            </svg>\n        \n            <svg\n                aria-hidden=\"true\"\n                class=\"icon icon-checkmark\"\n                width=\"1.1rem\"\n                height=\"0.7rem\"\n                viewBox=\"0 0 11 7\"\n                fill=\"none\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n            >\n                <path d=\"M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1\"\n                stroke=\"currentColor\"\n                stroke-width=\"1.75\"\n                stroke-linecap=\"round\"\n                stroke-linejoin=\"round\" />\n            </svg>\n            <span>Add a Premium Sympathy Card (+$5)</span>\n        </label>\n        <div class=\"image-note\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0658/2491/5637/files/card_1_1_300x.png?v=1768913478\" loading=\"lazy\" alt=\"\">\n        </div>\n    </div>\n\n    <div class=\"hand-note-content\">\n        <!-- <label for=\"handNote\" class=\"form__label\">Personal handwritten note:</label> -->\n        <textarea\n            id=\"handNote\"\n            class=\"text-area text-area--resize-vertical\"\n     \n            form=\"{{ product_form_id }}\"\n            placeholder=\"Write your message here\"\n            style=\"padding: 1rem;\"\n            maxlength=\"350\"\n            disabled\n        ></textarea>\n    </div>\n</div>\n\n\n<script>\ndocument.addEventListener('DOMContentLoaded', () => {\n  const checkbox = document.getElementById('noteTick');\n  const content = document.querySelector('.hand-note-content');\n  const textarea = document.getElementById('handNote');\n\n  if (!checkbox || !content || !textarea) return;\n\n  checkbox.addEventListener('change', () => {\n    const isOpen = checkbox.checked;\n\n    content.classList.toggle('is-open', isOpen);\n    textarea.disabled = !isOpen;\n\n    if (isOpen) {\n      textarea.focus();\n    } else {\n      textarea.value = '';\n    }\n  });\n});\n</script>"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "custom_liquid_z6ed9d": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"preview-form__buttons\">\n    <button type=\"button\" class=\"button preview-button button--full-width button--secondary\">Preview Your Personalization</button>\n</div>"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_YKjFtw": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"estimated-wrapper\">\n    <div class=\"icon-flex\">\n        <div>\n            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 90.88 45.7\" fill=\"currentColor\"><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><path d=\"M88.58,29.08h-.19c0-1.84,0-4,0-5.95-.13-5-5.06-5.06-5.06-5.06L80,18c-1.36-2.06-3.1-4.78-4.67-7.45C72.65,6,69.45,6.35,69.45,6.35H58.23v-4A2.3,2.3,0,0,0,55.92,0H23.53a2.3,2.3,0,0,0-2.3,2.31V37.39a2.31,2.31,0,0,0,2.3,2.31h4.08a8.94,8.94,0,0,0,16.89,0H68.07A8.94,8.94,0,0,0,85,39.7h3.61a2.31,2.31,0,0,0,2.31-2.31v-6A2.3,2.3,0,0,0,88.58,29.08Zm-52.52,12a4.33,4.33,0,1,1,4.32-4.33A4.33,4.33,0,0,1,36.06,41.08ZM62.14,18.23a2.16,2.16,0,0,1-2-2.31v-4a2.14,2.14,0,0,1,2-2.3h6.69c2,0,3.25,2.5,3.25,2.5s1.56,2.59,2.26,3.84.62,2.31-2,2.31ZM76.52,41.08a4.33,4.33,0,1,1,4.32-4.33A4.33,4.33,0,0,1,76.52,41.08Z\"/><path d=\"M16.74,13.79H2.31a2.31,2.31,0,0,1,0-4.62H16.74a2.31,2.31,0,1,1,0,4.62Z\"/><path d=\"M16.74,21.66H7.85a2.31,2.31,0,1,1,0-4.61h8.89a2.31,2.31,0,0,1,0,4.61Z\"/><path d=\"M16.74,29.54H14.26a2.31,2.31,0,0,1,0-4.62h2.48a2.31,2.31,0,0,1,0,4.62Z\"/></g></g></svg>\n        </div>\n        <div>\n            {% assign first_arrival_seconds = 2 | times: 24 | times: 60 | times: 60 %}\n            {% assign second_arrival_seconds = 8 | times: 24 | times: 60 | times: 60 %}\n\n            <span>Order ships <strong>{{ 'now' | date: \"%s\" | plus: first_arrival_seconds | date: \"%b %d\" }} - {{ 'now' | date: \"%s\" | plus: second_arrival_seconds | date: \"%b %d\" }}.</strong> if you order today.</span>\n        </div>\n    </div>\n    <div class=\"arrival-chart\">\n        <div>\n            <div class=\"icon-flex icon-flex-column\">\n                <div>\n                    <div class=\"rounded-icon\">\n                        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 87.5 87.5\" fill=\"currentColor\"><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><path d=\"M86.84,16.83a3.12,3.12,0,0,0-2.46-1.21H13.16L12.81,9.2A9.71,9.71,0,0,0,3.12,0a3.13,3.13,0,0,0,0,6.25A3.47,3.47,0,0,1,6.58,9.53L9.39,62.66s0,.05,0,.09h0a9.37,9.37,0,0,0,7.44,8.91,10.91,10.91,0,1,0,20.65,4.9,10.8,10.8,0,0,0-1.1-4.69H57.34a10.91,10.91,0,1,0,9.85-6.25c-.35,0-.7.06-1,.11a3.21,3.21,0,0,0-.52-.11H18.75a3.12,3.12,0,0,1-3.12-3.12,3.18,3.18,0,0,1,3.12-3.13H67.69a12.52,12.52,0,0,0,12.13-9.46L87.41,19.5h0a3.14,3.14,0,0,0-.57-2.68ZM31.25,76.56a4.69,4.69,0,1,1-4.69-4.69A4.68,4.68,0,0,1,31.25,76.56Zm40.62,0a4.68,4.68,0,1,1-4.68-4.69A4.68,4.68,0,0,1,71.87,76.56Zm1.88-28.18a6.28,6.28,0,0,1-6.06,4.74H18.75a9.46,9.46,0,0,0-3.57.7L13.49,21.87H80.37Z\"/></g></g></svg>\n                    </div>\n                </div>\n                <div>\n                    <span class=\"caption-large strong center\">{{ 'now' | date: \"%b %d\" }}</span>\n                    <span class=\"caption-large center\">Order placed</span>\n                </div>\n            </div>\n        </div>\n        <div>\n            <div class=\"icon-flex icon-flex-column\">\n                <div>\n                    <div class=\"rounded-icon\">\n                        <svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\"><path d=\"M0 3.75156C0 3.47454 0.224196 3.24997 0.500755 3.24997H10.647C10.9235 3.24997 11.1477 3.47454 11.1477 3.75156V5.07505V5.63362V6.10938V13.6616C10.9427 14.0067 10.8813 14.1101 10.5516 14.6648L7.22339 14.6646V13.6614H10.1462V4.25316H1.00151V13.6614H2.6842V14.6646H0.500755C0.224196 14.6646 0 14.44 0 14.163V3.75156Z\"></path>\n                            <path d=\"M18.9985 8.08376L11.1477 6.10938V5.07505L19.6212 7.20603C19.8439 7.26203 20 7.46255 20 7.69253V14.1631C20 14.4401 19.7758 14.6647 19.4992 14.6647H17.3071V13.6615H18.9985V8.08376ZM11.1477 13.6616L13.3442 13.6615L13.3443 14.6647L10.5516 14.6648L11.1477 13.6616Z\"></path>\n                            <path d=\"M7.71269 14.1854C7.71269 15.6018 6.56643 16.75 5.15245 16.75C3.73847 16.75 2.59221 15.6018 2.59221 14.1854C2.59221 12.7691 3.73847 11.6209 5.15245 11.6209C6.56643 11.6209 7.71269 12.7691 7.71269 14.1854ZM5.15245 15.7468C6.01331 15.7468 6.71118 15.0478 6.71118 14.1854C6.71118 13.3231 6.01331 12.6241 5.15245 12.6241C4.29159 12.6241 3.59372 13.3231 3.59372 14.1854C3.59372 15.0478 4.29159 15.7468 5.15245 15.7468Z\"></path>\n                            <path d=\"M17.5196 14.1854C17.5196 15.6018 16.3733 16.75 14.9593 16.75C13.5454 16.75 12.3991 15.6018 12.3991 14.1854C12.3991 12.7691 13.5454 11.6209 14.9593 11.6209C16.3733 11.6209 17.5196 12.7691 17.5196 14.1854ZM14.9593 15.7468C15.8202 15.7468 16.5181 15.0478 16.5181 14.1854C16.5181 13.3231 15.8202 12.6241 14.9593 12.6241C14.0985 12.6241 13.4006 13.3231 13.4006 14.1854C13.4006 15.0478 14.0985 15.7468 14.9593 15.7468Z\"></path></svg>\n                    </div>\n                </div>\n                <div>\n                    {% assign first_order_seconds = 1 | times: 24 | times: 60 | times: 60 %}\n                    {% assign second_order_seconds = 3 | times: 24 | times: 60 | times: 60 %}\n                    <span class=\"caption-large strong center\">{{ 'now' | date: \"%s\" | plus: first_order_seconds | date: \"%b %d\" }}-{{ 'now' | date: \"%s\" | plus: second_order_seconds | date: \"%d\" }}</span>\n                    <span class=\"caption-large center\">Order ships</span>\n                </div>\n            </div>\n        </div>\n        <div>\n            <div class=\"icon-flex icon-flex-column\">\n                <div>\n                    <div class=\"rounded-icon\">\n                        <svg\n                            aria-hidden=\"true\"\n                            focusable=\"false\"\n                            xmlns=\"http://www.w3.org/2000/svg\"\n                            width=\"20\"\n                            height=\"20\"\n                            viewBox=\"0 0 20 20\"\n                        >\n                            <path d=\"M9.69502 0.6786C9.91338 0.601796 10.1516 0.603123 10.3691 0.682353L18.2151 3.54058C18.61 3.68445 18.8728 4.05988 18.8728 4.48018V14.4287C18.8728 14.8074 18.6588 15.1537 18.32 15.3231L10.4731 19.2465C10.196 19.385 9.87022 19.3873 9.59117 19.2526L1.45405 15.3244C1.10843 15.1576 0.888794 14.8076 0.888794 14.4239V4.48434C0.888794 4.05997 1.15665 3.68181 1.55699 3.541L9.69502 0.6786ZM6.07999 3.01017L2.5346 4.25719L10.149 7.63545L13.5692 6.118L6.07999 3.01017ZM6.78606 2.76183L14.1997 5.83828L17.5367 4.35774L10.0268 1.62195L6.78606 2.76183ZM1.88879 14.4239L1.88879 5.06467L9.64898 8.50762V18.1701L1.88879 14.4239ZM17.8728 14.4287L10.649 18.0405V8.50762L17.8728 5.30263V14.4287Z\" fill-rule=\"evenodd\"/>\n                        </svg>\n                    </div>\n                </div>\n                <div>\n                    {% assign first_order_seconds = 2 | times: 24 | times: 60 | times: 60 %}\n                    {% assign second_order_seconds = 8 | times: 24 | times: 60 | times: 60 %}\n                    <span class=\"caption-large strong center\">{{ 'now' | date: \"%s\" | plus: first_order_seconds | date: \"%b %d\" }}-{{ 'now' | date: \"%s\" | plus: second_arrival_seconds | date: \"%d\" }}</span>\n                    <span class=\"caption-large center\">Delivered!</span>\n                </div>\n            </div>\n        </div>\n    </div>\n    <span class=\"accent-text-1 caption-large\">*The ETA is applied for US orders only. All products are made to order.</span>\n</div>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible_tab_LTHiNc": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Specification",
+            "icon": "ruler",
+            "content": "{{ product.metafields.custom.specifications | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_tab_dJGzB6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping Information",
+            "icon": "truck",
+            "content": "<p>* The above delivery timeframe applies only to orders with standard shipping methods.</p><p>* Standard Shipping: Approximately 2 to 5 business days</p><p>* Priority Shipping: Approximately 1 to 3 business days</p><p>* Please be sure the shipping address you provide to us is accurate. For more information about Shipping and Delivery, <a href=\"/policies/shipping-policy\" title=\"Shipping Policy\">click here</a>.</p>",
+            "page": ""
+          }
+        },
+        "share_yByHgc": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "judge_me_reviews_preview_badge_wTwRwJ",
+        "variant_picker",
+        "zepto_product_personalizer_product_personalizer_page_WgAVni",
+        "custom_liquid_TGhhTc",
+        "quantity_selector",
+        "custom_liquid_z6ed9d",
+        "buy_buttons",
+        "custom_liquid_YKjFtw",
+        "description",
+        "collapsible_tab_LTHiNc",
+        "collapsible_tab_dJGzB6",
+        "share_yByHgc"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "17229258009f94d949": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_ngTjV8": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_ngTjV8"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "17229258009f94d949"
+  ]
+}
