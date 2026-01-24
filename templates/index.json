@@ -143,14 +143,14 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Pic_5.1_1.jpg",
-            "link": "#"
+            "link": "shopify://products/dandelion-memorial-plaque-winds-of-heaven-gift"
           }
         },
         "item_WzbAXY": {
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Pic_6.4_1.jpg",
-            "link": "#"
+            "link": "shopify://products/horse-memorial-photo-plaque-equestrian-gift"
           }
         }
       },
