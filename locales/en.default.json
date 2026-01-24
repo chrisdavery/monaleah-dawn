@@ -68,7 +68,7 @@
   },
   "newsletter": {
     "label": "Email",
-    "success": "Thanks for subscribing",
+    "success": "Thanks for subscribing! As a welcome gift, take 10% off your next order using code GIFT10.",
     "button_label": "Receive Gift"
   },
   "accessibility": {
