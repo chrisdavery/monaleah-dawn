@@ -143,8 +143,12 @@
                                   | image_url: width: 500
                                   | image_tag:
                                     widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
-                                    sizes: sizes
+                                    sizes: sizes,
+                                    alt: block.settings.image.alt
                                 }}
+                                {% if block.settings.link != blank %}
+                                  <a href="{{ block.settings.link }}" class="full-unstyled-link link--image"></a>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}
@@ -256,6 +260,11 @@
                 "type": "image_picker",
                 "id": "image",
                 "label": "Image"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Link"
             }
         ]
     }
