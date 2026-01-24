@@ -133,7 +133,7 @@
                         (min-width: 1800px) {{ 1500 | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px,(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 4rem)
                       {%- endcapture -%}
 
-                        <div class="grid--two-item">
+                        <div class="grid--two-item" {{ block.shopify_attributes }}>
                             <div
                                 class="media media--transparent media--adapt"
                                 style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
