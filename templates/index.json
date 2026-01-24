@@ -242,13 +242,15 @@
         "item_j7qHQB": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Pic_11_3.jpg"
+            "image": "shopify://shop_images/Pic_11_3.jpg",
+            "link": ""
           }
         },
         "item_FeTjbE": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Pic_12_2.jpg"
+            "image": "shopify://shop_images/Pic_12_2.jpg",
+            "link": ""
           }
         }
       },
@@ -355,7 +357,7 @@
             "heading_size": "h1",
             "title_alignment": "left",
             "link_text": "",
-            "link": "#",
+            "link": "shopify://collections/rainbow-bridge-pet-memorial-stone",
             "alignment": "left",
             "second_image_link": ""
           }
