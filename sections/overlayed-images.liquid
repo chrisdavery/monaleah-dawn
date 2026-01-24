@@ -253,7 +253,7 @@
                         endif
                       -%}
                       
-                      <div class="overlay-image" id="Overlay-second-{{ block.id }}">
+                      <div class="overlay-image" id="Overlay-second-{{ block.id }}"  {{ block.shopify_attributes }}>
                           <div class="overlay__media {% if block.settings.mobile_second_image != blank %}small-hide{% endif %} media">
                                 {% assign desktop_columns = section.settings.columns_desktop %}
                                 {% assign mobile_columns = section.settings.columns_mobile %}
