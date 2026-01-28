@@ -30,6 +30,11 @@
     border-radius: 20px;
     background: #ece7e4;
   }
+  .tribute-link {
+    margin: 1rem 0;
+    display: block;
+    color: #0f4cd5;
+  }
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -145,6 +150,9 @@
                       {%- if item.content != blank -%}
                         <div class="rte">{{ item.content | metafield_tag }}</div>
                       {%- endif -%}
+                      {% if item.product_link != blank %}
+                        <a href="{{ item.product_link.value.url }}" class="tribute-link">[{{ item.product_link.value.text }}]</a>
+                      {% endif %}
                       {%- if item.name != blank -%}
                         <div class="name-row d-flex gap-1 flex-d-column align-center justify-center">
                           <div>
