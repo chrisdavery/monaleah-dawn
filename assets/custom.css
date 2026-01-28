@@ -321,6 +321,25 @@ sticky-product-cta h3 {
     padding: 0 !important;
 }
 
+/* 
+.cart-item__nested-line .cart-item__quantity,.cart-item-addon .cart-item__quantity {
+    display: none;
+}
+
+.cart-page-item-addon .cart-item__quantity {
+    visibility: hidden;
+    opacity: 0;
+}
+*/
+
+.cart-item__nested-line a, .cart-item-addon a, .cart-page-item-addon a {
+    pointer-events: none;
+}
+
+.hand-note .text-area.required-custom {
+    border: 1px solid red !important;
+}
+
 @media (min-width: 990px) {
     .shopify-policy__body {
         max-width: 80rem;
@@ -348,6 +367,11 @@ sticky-product-cta h3 {
 
     sticky-product-cta .button {
         width: 100%;
+        min-width: unset !important;
+    }
+
+    sticky-product-cta {
+        padding-inline: 1.5rem;
     }
 }
 

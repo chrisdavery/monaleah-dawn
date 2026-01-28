@@ -658,6 +658,8 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+              {% when 'sympathy_card' %}
+                {% render 'sympathy-card', block: block, product: product %}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -733,6 +735,33 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "sympathy_card",
+      "name": "Sympathy Card",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "product",
+          "id": "product_addon",
+          "label": "Product addon"
+        }
+      ]
     },
     {
       "type": "text",

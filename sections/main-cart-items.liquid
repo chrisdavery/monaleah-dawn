@@ -79,7 +79,12 @@
 
               <tbody>
                 {%- for item in cart.items -%}
-                  <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                  <tr class="cart-item  {% if item.parent_relationship.parent != null %}cart-item__nested-line{% endif %} {% if item.properties['_parent_id'] != blank %}cart-page-item-addon{% endif %}"
+                    id="CartItem-{{ item.index | plus: 1 }}"
+                    {% if item.parent_relationship.parent != null %}
+                      aria-label="{{- 'products.product.nested_label' | t: title: item.product.title, parent_title: item.parent_relationship.parent.title | escape -}}"
+                    {% endif %}
+                  >
                     <td class="cart-item__media">
                       {% if item.image %}
                         {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}

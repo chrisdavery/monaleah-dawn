@@ -1,0 +1,131 @@
+{% assign has_card = product.tags | where: 'sympathy-card' %}
+{% unless has_card.size > 0 %}
+{% break %}
+{% endunless %}
+
+{% style %}
+.note-flex {
+    width: 100%;
+    justify-content: space-between;
+}
+.note-flex .image-note-placeholder {
+    width: 8rem;
+    display: block;
+    height: auto;
+}
+.hand-note-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
+  padding: calc(.1rem + var(--inputs-border-width));
+}
+.image-note {
+    margin-top: 1rem;
+    margin-left: 2.8rem;
+}
+
+.image-note img, .image-note svg {
+    max-width: 100%;
+    display: block;
+    width: 10rem;
+    height: auto;
+}
+.hand-note-content.is-open {
+  max-height: 500px; /* enough to fit textarea */
+  opacity: 1;
+}
+.hand-note:has(.is-open) .image-note {
+    display: none;
+}
+{% endstyle %}
+
+{% assign addon_product = all_products[block.settings.product_addon] %}
+
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+<script src="{{ 'sympathy-card.js' | asset_url }}" defer></script>
+
+<sympathy-card class="hand-note block-hand-note"
+  data-for="{{ product.selected_or_first_available_variant.title }}"
+  data-variant-id="{{ addon_product.selected_or_first_available_variant.id }}"
+  {{ block.shopify_attributes }}>
+    <div class="product-form__input">
+        <label class="form__label">Sending this as a gift?</label>
+        <label for="noteTick" class="notetick__label">
+            <input
+                type="checkbox"
+                name="note_tick"
+                id="noteTick"
+                {% if addon_product and addon_product.available %}
+                    value="{{ addon_product.selected_or_first_available_variant.id }}"
+                {% endif %}
+                form="{{ product_form_id }}"
+            >
+            <svg
+                width="1.6rem"
+                height="1.6rem"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+            </svg>
+        
+            <svg
+                aria-hidden="true"
+                class="icon icon-checkmark"
+                width="1.1rem"
+                height="0.7rem"
+                viewBox="0 0 11 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <span>{{ block.settings.label }} {% if addon_product != blank %}(+{{ addon_product.price | money_without_trailing_zeros }}){% endif %}</span>
+        </label>
+        {% if block.settings.image != blank %}
+            <div class="image-note">
+                <img
+                srcset="
+                    {%- if block.settings.image.width >= 165 -%}{{ block.settings.image | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if block.settings.image.width >= 533 -%}{{ block.settings.image | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | image_url: width: 940 }} 940w,{%- endif -%}
+                    {%- if block.settings.image.width >= 1066 -%}{{ block.settings.image | image_url: width: 1066 }} 1066w,{%- endif -%}
+                    {{ block.settings.image | image_url }} {{ block.settings.image.width }}w
+                "
+                src="{{ block.settings.image | image_url: width: 533 }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                alt="{{ block.settings.image.alt | escape }}"
+                class="motion-reduce"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                >
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="hand-note-content">
+        <textarea
+            id="handNote"
+            class="text-area text-area--resize-vertical"
+            name="message"
+            {% if block.settings.placeholder != blank %}
+                placeholder="{{ block.settings.placeholder }}"
+            {% endif %}
+            form="{{ product_form_id }}"
+            style="padding: 1rem;"
+            maxlength="350"
+            required
+            disabled
+        ></textarea>
+    </div>
+</sympathy-card>

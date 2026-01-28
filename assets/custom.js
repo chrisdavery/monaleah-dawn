@@ -137,6 +137,10 @@ subscribe('variant-change', (eventData) => {
     // Log the event data
     const variant = eventData.data.variant
     activeGallery(variant)
+
+    if (document.querySelector('sympathy-card')) {
+        document.querySelector('sympathy-card').dataset.for = variant.title
+    }
 })
 
 if (document.querySelector('.selected-variant-obj') != null) {
@@ -211,3 +215,106 @@ class StickyProductCTA extends HTMLElement {
 }
 
 customElements.define('sticky-product-cta', StickyProductCTA);
+
+
+subscribe('cart-update', (eventData) => {
+    if (eventData.source == 'cart-items') {
+        eventSympathyCardCleanup(eventData);
+    }
+});
+
+function eventSympathyCardCleanup(eventData) {
+    const cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+
+    if (!eventData.cartData || !cart) return;
+    
+    // Get cart data from the sections response (same as eventFormAdd)
+    if (!eventData.cartData.sections || !eventData.cartData.sections['cart-drawer']) return;
+
+    const cartDrawerHTML = eventData.cartData.sections['cart-drawer'];
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = cartDrawerHTML;
+    
+    // Find the cart-data noscript element
+    const cartDataElement = tempDiv.querySelector('.cart-data');
+    if (!cartDataElement) return;
+
+    try {
+        const fullCartData = JSON.parse(cartDataElement.textContent);
+        const cartItems = fullCartData.items || [];
+        
+        // Check if cart is empty
+        if (cartItems.length === 0) {
+            const cartDrawer = document.querySelector('cart-drawer');
+            if (cartDrawer) {
+                cartDrawer.classList.add('is-empty');
+            }
+            return; // No need to check for orphaned cards if cart is empty
+        }
+        
+        // Find all parent variant IDs currently in the cart
+        const parentVariantIdsInCart = new Set();
+        cartItems.forEach(item => {
+            parentVariantIdsInCart.add(String(item.variant_id));
+        });
+        
+        // Find sympathy cards that have orphaned parent products
+        const updatesToMake = [];
+
+        cartItems.forEach(item => {
+            const properties = item.properties || {};
+            const parentId = properties._parent_id;
+
+            // Check if this is a sympathy card with a parent_id property
+            if (parentId && parentId !== '') {
+                // If parent product is not in cart, mark this card for removal (set quantity to 0)
+                if (!parentVariantIdsInCart.has(String(parentId))) {
+                    updatesToMake.push({ [item.variant_id]: 0 });
+                }
+            }
+        });
+        
+        // If no orphaned cards, return
+        if (updatesToMake.length === 0) return;
+        
+        // Remove orphaned sympathy cards
+        const formData = new FormData();
+        
+        updatesToMake.forEach(update => {
+            Object.entries(update).forEach(([id, quantity]) => {
+                formData.append(`updates[${id}]`, quantity);
+            });
+        });
+
+        if (cart) {
+            formData.append(
+                'sections',
+                cart.getSectionsToRender().map((section) => section.id)
+            );
+            formData.append('sections_url', window.location.pathname);
+        }
+
+        fetch(window.Shopify.routes.root + 'cart/update.js', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then((response) => {
+            cart.renderContents(response);
+            
+            // Check if cart is now empty after removing sympathy cards
+            if (response.item_count === 0) {
+                if (cart) {
+                    cart.classList.add('is-empty');
+                }
+            }
+            
+            // Optional: Show notification
+            if (updatesToMake.length > 0) {
+                console.log(`Removed ${updatesToMake.length} sympathy card${updatesToMake.length > 1 ? 's' : ''} because related product${updatesToMake.length > 1 ? 's were' : ' was'} removed`);
+            }
+        }).catch(console.error);
+    } catch (e) {
+        console.error('Error in sympathy card cleanup:', e);
+    }
+}
