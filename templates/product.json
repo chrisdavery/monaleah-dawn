@@ -57,7 +57,7 @@
             "label": "Add a Premium Sympathy Card",
             "placeholder": "Write your message here",
             "image": "{{ block.settings.product_addon.featured_image }}",
-            "product_addon": "premium-sympathy-card"
+            "product_addon": "premium-sympathy-card-addon"
           }
         },
         "quantity_selector": {
