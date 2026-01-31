@@ -11,9 +11,6 @@
         endfor
     endpaginate
 %}
-<noscript class="active-item-data">
-    {{ active_item | json }}
-</noscript>
 
 {% if active_item %}
   <meta property="og:title" content="{{ active_item.title | escape }}">
