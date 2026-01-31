@@ -194,7 +194,7 @@
                       
                       <div class="button-share-wrapper">
                         {% capture finalurl %}{% render 'full-url' %}{% endcapture %}
-                        {% capture sharer_url %}{{ finalurl }}&tribute={{ item_id }}&v={{ "now" | date: "%s" }}{% endcapture %}
+                        {% capture sharer_url %}{{ finalurl }}{% if finalurl contains '?' %}?{% else %}&{% endif %}tribute={{ item_id }}&v={{ "now" | date: "%s" }}{% endcapture %}
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-share-url="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-title="{{ item.title | escape }}"
