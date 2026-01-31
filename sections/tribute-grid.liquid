@@ -195,7 +195,7 @@
                       <div class="button-share-wrapper">
                         {% capture finalurl %}{% render 'full-url' %}{% endcapture %}
                         {% capture sharer_url %}{{ finalurl }}&tribute={{ item_id }}&v={{ "now" | date: "%s" }}{% endcapture %}
-                        <a href="#"
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-share-url="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-title="{{ item.title | escape }}"
                           target="_blank" class="button button--full-width button--share-tribute">
