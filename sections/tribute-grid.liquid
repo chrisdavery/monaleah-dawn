@@ -193,8 +193,19 @@
                       {%- endif -%}
                       
                       <div class="button-share-wrapper">
+                        {% comment %} Get the current URL {% endcomment %}
                         {% capture finalurl %}{% render 'full-url' %}{% endcapture %}
-                        {% capture sharer_url %}{{ finalurl }}{% if finalurl contains '?' %}&{% else %}?{% endif %}tribute={{ item_id }}&v={{ "now" | date: "%s" }}{% endcapture %}
+                        
+                        {% comment %} Clean the URL by removing existing tribute parameters {% endcomment %}
+                        {% assign url_parts = finalurl | split: '?' %}
+                        {% assign base_url = url_parts[0] %}
+                        
+                        {% comment %} Build clean query parameters with only the current tribute {% endcomment %}
+                        {% capture query_params %}tribute={{ item_id }}&v={{ "now" | date: "%s" }}{% endcapture %}
+                        
+                        {% comment %} Construct the final URL {% endcomment %}
+                        {% capture sharer_url %}{{ base_url }}?{{ query_params }}{% endcapture %}
+                        
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-share-url="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-plain-url="{{ sharer_url }}"
