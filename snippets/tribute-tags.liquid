@@ -2,7 +2,7 @@
     assign active_item = blank
     assign item_values = shop.metaobjects['tribute_wall_items'].values
 
-    paginate item_values by 2
+    paginate item_values by 12
         for item in item_values
             if item.system.id == tribute_id
                 assign active_item = item
