@@ -23,7 +23,11 @@
 {% if template.suffix contains 'tribute-wall' and finalurl contains 'tribute=' %}
   {%- comment -%} Extract tribute ID from the URL {%- endcomment -%}
   {%- assign tribute_param = finalurl | split: 'tribute=' | last -%}
-  {%- assign tribute_id = tribute_param | split: '&' | first | plus: 0 -%}
+  {% if finalurl contains '?' %}
+    {%- assign tribute_id = tribute_param | split: '&' | first | plus: 0 -%}
+  {% else %}
+    {%- assign tribute_id = tribute_param | split: '?' | first | plus: 0 -%}
+  {% endif %}
   {% render 'tribute-tags', finalurl: finalurl, tribute_id: tribute_id %}
 {% else %}
   <meta property="og:title" content="{{ og_title | escape }}">
