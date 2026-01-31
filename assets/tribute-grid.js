@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const shareUrl = this.getAttribute('data-share-url');
       const title = this.getAttribute('data-title') || '';
-
+debugger
       // Facebook sharer URL
       const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${encodeURIComponent(title)}`;
 
