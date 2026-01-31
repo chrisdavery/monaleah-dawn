@@ -200,8 +200,13 @@
                         {% assign url_parts = finalurl | split: '?' %}
                         {% assign base_url = url_parts[0] %}
                         
+                        {% assign min = 1 %}
+                        {% assign max = 100 %}
+                        {% assign diff = max | minus: min %}
+                        {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+
                         {% comment %} Build clean query parameters with only the current tribute {% endcomment %}
-                        {% capture query_params %}tribute={{ item_id }}&v={{ "now" | date: "%s" }}{% endcapture %}
+                        {% capture query_params %}tribute={{ item_id }}&v={{ randomNumber }}{% endcapture %}
                         
                         {% comment %} Construct the final URL {% endcomment %}
                         {% capture sharer_url %}{{ base_url }}?{{ query_params }}{% endcapture %}
