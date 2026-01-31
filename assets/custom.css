@@ -340,6 +340,10 @@ sticky-product-cta h3 {
     border: 1px solid red !important;
 }
 
+.drawer__inner {
+    width: 46rem;
+}
+
 @media (min-width: 990px) {
     .shopify-policy__body {
         max-width: 80rem;
@@ -372,6 +376,10 @@ sticky-product-cta h3 {
 
     sticky-product-cta {
         padding-inline: 1.5rem;
+    }
+
+    .cart-item .product-option {
+        font-size: 1.2rem;
     }
 }
 

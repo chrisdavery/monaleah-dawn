@@ -87,7 +87,11 @@ class SympathyCard extends HTMLElement {
     if (noteValue) {
       itemData.properties.Message = noteValue;
     }
-    
+
+    if (this.dataset.for) {
+      itemData.properties.For = this.dataset.for
+    }
+
     // Add parent_id as a line item property when available
     if (parentId) {
       itemData.properties._parent_id = parentId.toString();

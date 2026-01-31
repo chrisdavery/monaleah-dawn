@@ -75,6 +75,7 @@
     "skip_to_text": "Skip to content",
     "skip_to_product_info": "Skip to product information",
     "verified_purchase": "Verified Purchase",
+    "share_this_tribute": "Share this Tribute",
     "close": "Close",
     "unit_price_separator": "per",
     "vendor": "Vendor:",
@@ -118,6 +119,7 @@
     "product": {
       "add_to_cart": "Add to cart",
       "choose_options": "Choose options",
+      "for": "For",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
       "inventory_in_stock": "In stock",
