@@ -19,4 +19,7 @@
   <meta property="og:image:secure_url" content="https:{{ active_item.image | img_url: '1200x630', crop: 'center' }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta name="twitter:title" content="{{ active_item.title | escape }}">
+  <meta name="twitter:description" content="{{ active_item.content | metafield_tag | strip_html | truncatewords: 30 | escape }}">
+  <meta name="twitter:image" content="http:{{ active_item.image | img_url: '1200x630', crop: 'center' }}">
 {% endif %}
