@@ -13,6 +13,7 @@
 %}
 
 {% if active_item %}
+  <meta property="og:url" content="{{ finalurl }}">
   <meta property="og:title" content="{{ active_item.title | escape }}">
   <meta property="og:description" content="{{ active_item.content | metafield_tag | strip_html | truncate: 100 | escape | escape }}">
   <meta property="og:image" content="http:{{ active_item.image | img_url: '1200x630', crop: 'center' }}">

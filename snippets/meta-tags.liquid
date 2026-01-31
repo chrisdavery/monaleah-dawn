@@ -15,11 +15,10 @@
 
 {% capture finalurl %}{% render 'full-url' %}{% endcapture %}
 
-
 <meta property="og:site_name" content="{{ shop.name }}">
-<meta property="og:url" content="{{ og_url }}">
 <meta property="og:type" content="{{ og_type }}">
 
+{% comment %} CRITICAL FIX: og:url MUST include tribute parameters {% endcomment %}
 {% if template.suffix contains 'tribute-wall' and finalurl contains 'tribute=' %}
   {%- comment -%} Extract tribute ID from the URL {%- endcomment -%}
   {%- assign tribute_param = finalurl | split: 'tribute=' | last -%}
@@ -28,8 +27,11 @@
   {% else %}
     {%- assign tribute_id = tribute_param | split: '?' | first | plus: 0 -%}
   {% endif %}
+
+  {% comment %} Set og:url to the ACTUAL URL with tribute parameters {% endcomment %}
   {% render 'tribute-tags', finalurl: finalurl, tribute_id: tribute_id %}
 {% else %}
+  <meta property="og:url" content="{{ og_url }}">
   <meta property="og:title" content="{{ og_title | escape }}">
   <meta property="og:description" content="{{ og_description | escape }}">
 {% endif %}
@@ -51,7 +53,7 @@
 {%- if settings.social_twitter_link != blank -%}
   <meta name="twitter:site" content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}">
 {%- endif -%}
-  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image">
 {% unless template.suffix contains 'tribute-wall' and finalurl contains 'tribute=' %}
   <meta name="twitter:title" content="{{ og_title | escape }}">
   <meta name="twitter:description" content="{{ og_description | escape }}">
