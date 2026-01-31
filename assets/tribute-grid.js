@@ -23,19 +23,19 @@
 })();
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.button--share-tribute').forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
+// document.addEventListener('DOMContentLoaded', function() {
+//   document.querySelectorAll('.button--share-tribute').forEach(button => {
+//     button.addEventListener('click', function(e) {
+//       e.preventDefault();
       
-      const shareUrl = this.getAttribute('data-share-url');
-      const title = this.getAttribute('data-title') || '';
-debugger
-      // Facebook sharer URL
-      const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${encodeURIComponent(title)}`;
+//       const shareUrl = this.getAttribute('data-share-url');
+//       const title = this.getAttribute('data-title') || '';
+// debugger
+//       // Facebook sharer URL
+//       const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${encodeURIComponent(title)}`;
 
-      // Open in NEW TAB instead of popup
-      window.open(fbShareUrl, '_blank');
-    });
-  });
-});
+//       // Open in NEW TAB instead of popup
+//       window.open(fbShareUrl, '_blank');
+//     });
+//   });
+// });
