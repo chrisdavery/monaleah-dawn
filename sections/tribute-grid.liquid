@@ -51,6 +51,7 @@
   }
 
   .button-share-wrapper {
+    display: none;
     padding-top: 2rem;
   }
 
@@ -241,6 +242,7 @@
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-share-url="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-plain-url="{{ sharer_url }}"
+                          data-id="{{ item_id }}"
                           data-title="{{ item.title | escape }}"
                           target="_blank" class="button button--full-width button--share-tribute">
                           <span class="button-share-content">
