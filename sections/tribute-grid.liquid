@@ -92,7 +92,7 @@
       </div>
     {%- endunless -%}
     <slider-component class="slider-mobile-gutter">
-      {% paginate item_values by 12 %}
+      {% paginate item_values by 2 %}
         <ul
           class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--tablet grid--peek{% endif %}"
           id="Slider-{{ section.id }}"
@@ -195,20 +195,48 @@
                         {% comment %} Get the current URL {% endcomment %}
                         {% capture finalurl %}{% render 'full-url' %}{% endcapture %}
                         
-                        {% comment %} Clean the URL by removing existing tribute parameters {% endcomment %}
+                        {% comment %} Parse the URL {% endcomment %}
                         {% assign url_parts = finalurl | split: '?' %}
                         {% assign base_url = url_parts[0] %}
+                        {% assign query_string = url_parts[1] %}
                         
-                        {% assign min = 1 %}
-                        {% assign max = 100 %}
-                        {% assign diff = max | minus: min %}
-                        {% assign random_number = "now" | date: "%N" | modulo: diff | plus: min %}
-
-                        {% comment %} Build clean query parameters with only the current tribute {% endcomment %}
-                        {% capture query_params %}tribute={{ item_id }}&v={{ random_number }}{% endcapture %}
+                        {% comment %} Create random number {% endcomment %}
+                        {% assign random_number = "now" | date: "%s" | modulo: 10000 %}
+                        
+                        {% comment %} Start building query string {% endcomment %}
+                        {% assign new_query_string = "" %}
+                        
+                        {% comment %} Add tribute parameter {% endcomment %}
+                        {% if item_id and item_id != blank %}
+                          {% assign new_query_string = new_query_string | append: "tribute=" | append: item_id %}
+                        {% endif %}
+                        
+                        {% comment %} Add version parameter {% endcomment %}
+                        {% if new_query_string != "" %}
+                          {% assign new_query_string = new_query_string | append: "&" %}
+                        {% endif %}
+                        {% assign new_query_string = new_query_string | append: "v=" | append: random_number %}
+                        
+                        {% comment %} Add other existing parameters EXCEPT tribute and v {% endcomment %}
+                        {% if query_string and query_string != blank %}
+                          {% assign existing_params = query_string | split: '&' %}
+                          {% for param in existing_params %}
+                            {% assign param_name = param | split: '=' | first %}
+                            {% unless param_name == 'tribute' or param_name == 'v' %}
+                              {% if new_query_string != "" %}
+                                {% assign new_query_string = new_query_string | append: "&" %}
+                              {% endif %}
+                              {% assign new_query_string = new_query_string | append: param %}
+                            {% endunless %}
+                          {% endfor %}
+                        {% endif %}
                         
                         {% comment %} Construct the final URL {% endcomment %}
-                        {% capture sharer_url %}{{ base_url }}?{{ query_params }}{% endcapture %}
+                        {% if new_query_string != "" %}
+                          {% capture sharer_url %}{{ base_url }}?{{ new_query_string }}{% endcapture %}
+                        {% else %}
+                          {% assign sharer_url = base_url %}
+                        {% endif %}
                         
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
                           data-share-url="https://www.facebook.com/sharer/sharer.php?u={{ sharer_url | url_encode }}"
