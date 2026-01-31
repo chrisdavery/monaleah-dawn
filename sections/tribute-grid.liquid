@@ -203,10 +203,10 @@
                         {% assign min = 1 %}
                         {% assign max = 100 %}
                         {% assign diff = max | minus: min %}
-                        {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+                        {% assign random_number = "now" | date: "%N" | modulo: diff | plus: min %}
 
                         {% comment %} Build clean query parameters with only the current tribute {% endcomment %}
-                        {% capture query_params %}tribute={{ item_id }}&v={{ randomNumber }}{% endcapture %}
+                        {% capture query_params %}tribute={{ item_id }}&v={{ random_number }}{% endcapture %}
                         
                         {% comment %} Construct the final URL {% endcomment %}
                         {% capture sharer_url %}{{ base_url }}?{{ query_params }}{% endcapture %}
