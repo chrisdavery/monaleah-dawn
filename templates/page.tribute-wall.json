@@ -26,21 +26,24 @@
           "type": "heading",
           "settings": {
             "heading": "This Month's Tribute Impact",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "set_as_h1": true
           }
         },
         "heading_yaCmPF": {
           "type": "heading",
           "settings": {
             "heading": "Every photo tribute shared this month unlocks a $3 donation toward medical care for senior dogs still waiting for a home.",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "set_as_h1": false
           }
         },
         "heading_tFhzC4": {
           "type": "heading",
           "settings": {
             "heading": "Benefiting: The Grey Muzzle Organization",
-            "heading_size": "h2"
+            "heading_size": "h2",
+            "set_as_h1": false
           }
         },
         "text_8RbLnQ": {
@@ -123,7 +126,7 @@
     "tribute_grid_7qQw64": {
       "type": "tribute-grid",
       "custom_css": [
-        "@media (min-width: 990px) {.multicolumn-list__item:only-child {max-width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);}}"
+        "@media (min-width: 990px) {.multicolumn-list__item:only-child {max-width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3); }}"
       ],
       "name": "Tribute Grid",
       "settings": {
