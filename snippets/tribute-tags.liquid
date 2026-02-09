@@ -13,7 +13,6 @@
 %}
 
 {% if active_item %}
-  <link rel="canonical" href="{{ finalurl }}">
   <meta property="og:url" content="{{ finalurl }}">
   <meta property="og:title" content="{{ active_item.title | escape }}">
   <meta property="og:description" content="{{ active_item.content | metafield_tag | strip_html | truncate: 100 | escape | escape }}">

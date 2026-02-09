@@ -7,9 +7,11 @@
     <meta name="theme-color" content="">
     {% capture finalurl %}{% render 'full-url' %}{% endcapture %}
 
-    {% unless template.suffix contains 'tribute-wall' and finalurl contains 'tribute=' %}
+    {% if page.metafields.custom.canonical_page != blank  %}
+      <link rel="canonical" href="{{ page.metafields.custom.canonical_page.url }}">
+    {% else %}
       <link rel="canonical" href="{{ canonical_url }}">
-    {% endunless %}
+    {% endif %}
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">

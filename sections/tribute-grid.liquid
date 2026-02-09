@@ -54,6 +54,29 @@
     padding-top: 2rem;
   }
 
+  .filter-row {
+    margin-bottom: 3rem;
+  }
+
+  .label-filter {
+    display: block;
+    margin-bottom: .8rem;
+    font-size: 1.3rem;
+  }
+
+  .filter-tribute-item {
+    padding: 0.6rem 1.2rem !important;
+    min-height: unset;
+    min-width: 6rem;
+    margin: 0 !important;
+  }
+
+  .filter-tribute {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -65,6 +88,12 @@
 {%- liquid
     assign item_count = shop.metaobjects['tribute_wall_items'].values_count
     assign item_values = shop.metaobjects['tribute_wall_items'].values
+
+    if section.settings.filter != blank
+      assign category_value = section.settings.filter
+      assign item_values = item_values | where: 'category', category_value
+    endif
+
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
   assign show_mobile_slider = false
   if section.settings.swipe_on_mobile and item_values.count > columns_mobile_int
@@ -91,6 +120,33 @@
         {%- endif -%}
       </div>
     {%- endunless -%}
+    {% if section.settings.menu_filter_1 != blank %}
+      <div class="filter-panel">
+        {% if section.settings.menu_filter_1 != blank %}
+          <div class="filter-row">
+            {% if section.settings.menu_filter_label_1 != blank %}
+              <div>
+                <span class="label-filter">
+                  {{ section.settings.menu_filter_label_1 }}
+                </span>
+              </div>
+            {% endif %}
+            <div>
+              {% if section.settings.menu_filter_1 != blank %}
+                <ul class="list-unstyled filter-tribute">
+                  {% for link in section.settings.menu_filter_1.links %}
+                    <li>
+                      <a href="{{ link.url }}" class="filter-tribute-item button {% if link.active %}active button--primary{% else %}button--secondary{% endif %}">{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
     <slider-component class="slider-mobile-gutter">
       {% paginate item_values by 12 %}
         <ul
@@ -304,10 +360,25 @@
   },
   "settings": [
     {
+      "type": "link_list",
+      "id": "menu_filter_1",
+      "label": "Menu filter 1"
+    },
+    {
+      "type": "text",
+      "id": "menu_filter_label_1",
+      "label": "Menu filter 1 label"
+    },
+    {
       "type": "inline_richtext",
       "id": "title",
       "default": "t:sections.multicolumn.settings.title.default",
       "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+      "type": "text",
+      "id": "filter",
+      "label": "Filter By"
     },
     {
       "type": "select",
